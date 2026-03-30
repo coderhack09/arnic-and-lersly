@@ -35,17 +35,17 @@ export const siteConfig = {
   },
   giftRegistry: {
     QR_1:{
-    id: "MariBank",
-    src: "/QR/pleaseProvideQR.png",
-    label: "MariBank",
-    accountNumber: "MARIBANK: To Follow",
-    },
-    QR_2:{
-    id: "gcash",
-    src: "/QR/pleaseProvideQR.png",
+    id: "GCash",
+    src: "/QR/Gcash.png",
     label: "GCash",
-    accountNumber: "GCash: to Follow.",
-    }
+    accountNumber: "AI***N I.",
+    },
+    // QR_2:{
+    // id: "gcash",
+    // src: "/QR/pleaseProvideQR.png",
+    // label: "GCash",
+    // accountNumber: "GCash: to Follow.",
+    // }
   },
   ceremony: {
     location: "Iglesia Ni Cristo, Nasugbu, Batangas",
