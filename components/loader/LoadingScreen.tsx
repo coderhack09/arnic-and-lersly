@@ -141,7 +141,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   }, [onComplete]);
 
   const coupleNames = `${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname}`;
-  const hashtag = '#NOMAYnatedForKenneth';
+  const hashtag = '#AileenandArjay';
   const productionCredit = '';
 
 
@@ -270,7 +270,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             </p>
 
             {/* Countdown text — Playfair Display, cream with gold glow */}
-            <h2 className="text-center">
+            {/* <h2 className="text-center">
               <span
                 className="inline-block font-bold tracking-[0.12em] sm:tracking-[0.18em] uppercase leading-tight px-2"
                 style={{
@@ -283,7 +283,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
               >
                 {countdownText}
               </span>
-            </h2>
+            </h2> */}
           </div>
         </div>
 
