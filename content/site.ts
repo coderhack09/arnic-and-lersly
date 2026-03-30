@@ -1,8 +1,8 @@
 export const siteConfig = {
   couple: {
-    bride: "Aileen ", //Noenyl Bryle M. Gonzaga
+    bride: "Aileen R. Isla", //Noenyl Bryle M. Gonzaga
     brideNickname: "Aileen", //Ltryl
-    groom: "Arjay", //Ltryl B. Benitez
+    groom: "Arjay C. Credito", //Ltryl B. Benitez
     groomNickname: "Arjay",
     monogram:"/monogram/monogram.png" ,//Ltryl
     backgroundMusic:"/background_music/Bawat Daan - Zephanie (Lyrics)  The Killer Bride OST.mp3"
