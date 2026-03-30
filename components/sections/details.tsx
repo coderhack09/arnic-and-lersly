@@ -1,7 +1,7 @@
 "use client"
 
 import { Section } from "@/components/section"
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { QRCodeSVG } from "qrcode.react"
 import { siteConfig } from "@/content/site"
@@ -32,6 +32,94 @@ const cinzel = Cinzel({
 
 // Colors sourced from globals.css @theme inline — edit there to update everywhere
 
+// ─── Plane trail ─────────────────────────────────────────────────────────────
+const PlaneTrail: React.FC = () => {
+  const pathData =
+    'M 520,60 C 440,140 280,100 240,250 C 200,400 360,430 320,560 C 280,680 120,610 100,740 C 80,860 200,920 160,980'
+  const dur = 10
+  return (
+    <div className="absolute inset-0 pointer-events-none z-10 w-full h-full overflow-hidden">
+      <svg
+        viewBox="0 0 600 1000"
+        className="w-full h-full opacity-45"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <defs>
+          <mask id="detailsTrailMask">
+            <path
+              d={pathData}
+              fill="none"
+              stroke="white"
+              strokeWidth="8"
+              strokeDasharray="3000"
+              strokeDashoffset="3000"
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                from="3000"
+                to="0"
+                dur={`${dur}s`}
+                repeatCount="indefinite"
+                calcMode="linear"
+              />
+            </path>
+          </mask>
+          <filter id="detailsPencil" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+          </filter>
+        </defs>
+        <path
+          d={pathData}
+          fill="none"
+          style={{ stroke: 'var(--color-motif-medium)' }}
+          strokeWidth="1.5"
+          strokeDasharray="6,10"
+          strokeLinecap="round"
+          filter="url(#detailsPencil)"
+          mask="url(#detailsTrailMask)"
+        />
+        <g>
+          <path
+            d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+            style={{ fill: 'var(--color-motif-deep)' }}
+            transform="scale(1.4) rotate(90, 10.5, 12) translate(-10.5, -12)"
+          />
+          <animateMotion
+            dur={`${dur}s`}
+            repeatCount="indefinite"
+            rotate="auto"
+            path={pathData}
+            calcMode="paced"
+          />
+        </g>
+      </svg>
+    </div>
+  )
+}
+
+// ─── Airplane silhouette for background decoration ────────────────────────────
+const AirplaneSilhouette: React.FC<{
+  className?: string
+  style?: React.CSSProperties
+  size?: number
+}> = ({ className = '', style = {}, size = 120 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={`absolute pointer-events-none select-none ${className}`}
+    style={style}
+    aria-hidden
+  >
+    <path
+      d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+      fill="var(--color-motif-medium)"
+    />
+  </svg>
+)
+
 export function Details() {
   const [copiedItems, setCopiedItems] = useState<Set<string>>(new Set())
   const [currentReceptionImageIndex, setCurrentReceptionImageIndex] = useState(0)
@@ -40,10 +128,10 @@ export function Details() {
   const [rotationOffset, setRotationOffset] = useState(0)
   
   const coupleImages = [
-    "/mobile-background/couple (17).webp",
-    "/mobile-background/couple (18).webp",
-    "/mobile-background/couple (19).webp",
-    "/mobile-background/couple (20).webp",
+    "/mobile-background/couple (1).webp",
+    "/mobile-background/couple (2).webp",
+    "/mobile-background/couple (3).webp",
+    "/mobile-background/couple (4).webp",
   ]
 
   const receptionImages = siteConfig.reception.image
@@ -126,7 +214,42 @@ export function Details() {
           className="absolute inset-0 opacity-[0.08]"
           style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 15%, var(--color-motif-silver) 0%, transparent 55%)' }}
         />
+
+        {/* ── Airplane silhouette background decorations ── */}
+        <AirplaneSilhouette
+          size={200}
+          className="opacity-[0.10]"
+          style={{ top: '3%', left: '2%', transform: 'rotate(-20deg)' }}
+        />
+        <AirplaneSilhouette
+          size={130}
+          className="opacity-[0.08]"
+          style={{ top: '14%', right: '3%', transform: 'rotate(30deg)' }}
+        />
+        <AirplaneSilhouette
+          size={110}
+          className="opacity-[0.09]"
+          style={{ top: '42%', left: '1%', transform: 'rotate(15deg)' }}
+        />
+        <AirplaneSilhouette
+          size={160}
+          className="opacity-[0.10]"
+          style={{ bottom: '20%', right: '2%', transform: 'rotate(-35deg)' }}
+        />
+        <AirplaneSilhouette
+          size={90}
+          className="opacity-[0.07]"
+          style={{ bottom: '4%', left: '8%', transform: 'rotate(50deg)' }}
+        />
+        <AirplaneSilhouette
+          size={120}
+          className="opacity-[0.08]"
+          style={{ top: '65%', right: '10%', transform: 'rotate(-10deg)' }}
+        />
       </div>
+
+      {/* Plane trail animation */}
+      <PlaneTrail />
 
       {/* Flower decoration - top left corner */}
       <div className="absolute left-0 top-0 z-0 pointer-events-none">

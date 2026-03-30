@@ -62,9 +62,14 @@ function mapStaticEntourage(): EntourageMember[] {
     if (group === "kate-family") category = "Parents of the Bride"
     if (group === "christian-family") category = "Parents of the Groom"
     if (group === "candle") category = "Candle Sponsors"
+    if (group === "veil") category = "Veil Sponsors"
     if (group === "cord") category = "Cord Sponsors"
     return { Name: name, RoleTitle: role, RoleCategory: category, Email: "" }
   })
+}
+
+function toTitleCase(str: string): string {
+  return str.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
 }
 
 function mapStaticSponsors(): PrincipalSponsor[] {
@@ -99,11 +104,97 @@ const ROLE_CATEGORY_ORDER = [
   "Flower Girls",
 ]
 
-const HIDDEN_ROLE_CATEGORIES = new Set([
-  "Candle Sponsors",
-  "Veil Sponsors",
-  "Cord Sponsors",
-])
+const HIDDEN_ROLE_CATEGORIES = new Set<string>([])
+
+// ─── Plane trail (same concept as Hero.tsx, unique SVG IDs) ───────────────────
+const PlaneTrail: React.FC = () => {
+  const pathData =
+    'M 80,80 C 160,160 300,120 350,260 C 400,400 260,420 300,540 C 340,660 500,600 520,740 C 540,860 420,920 480,980'
+  const dur = 10
+  return (
+    <div className="absolute inset-0 pointer-events-none z-10 w-full h-full overflow-hidden">
+      <svg
+        viewBox="0 0 600 1000"
+        className="w-full h-full opacity-45"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <defs>
+          <mask id="entourageTrailMask">
+            <path
+              d={pathData}
+              fill="none"
+              stroke="white"
+              strokeWidth="8"
+              strokeDasharray="3000"
+              strokeDashoffset="3000"
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                from="3000"
+                to="0"
+                dur={`${dur}s`}
+                repeatCount="indefinite"
+                calcMode="linear"
+              />
+            </path>
+          </mask>
+          <filter id="entouragePencil" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+          </filter>
+        </defs>
+        {/* Dashed trail path */}
+        <path
+          d={pathData}
+          fill="none"
+          style={{ stroke: 'var(--color-motif-medium)' }}
+          strokeWidth="1.5"
+          strokeDasharray="6,10"
+          strokeLinecap="round"
+          filter="url(#entouragePencil)"
+          mask="url(#entourageTrailMask)"
+        />
+        {/* Animated airplane icon */}
+        <g>
+          <path
+            d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+            style={{ fill: 'var(--color-motif-deep)' }}
+            transform="scale(1.4) rotate(90, 10.5, 12) translate(-10.5, -12)"
+          />
+          <animateMotion
+            dur={`${dur}s`}
+            repeatCount="indefinite"
+            rotate="auto"
+            path={pathData}
+            calcMode="paced"
+          />
+        </g>
+      </svg>
+    </div>
+  )
+}
+
+// ─── Airplane silhouette for background decoration ────────────────────────────
+const AirplaneSilhouette: React.FC<{
+  className?: string
+  style?: React.CSSProperties
+  size?: number
+}> = ({ className = '', style = {}, size = 120 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={`absolute pointer-events-none select-none ${className}`}
+    style={style}
+    aria-hidden
+  >
+    <path
+      d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+      fill="var(--color-motif-medium)"
+    />
+  </svg>
+)
 
 function normalizeRoleCategory(category: string): string {
   const normalized = category.trim()
@@ -263,10 +354,10 @@ export function Entourage() {
           style={{ background: 'linear-gradient(to right, transparent, color-mix(in srgb, var(--color-motif-silver) 21%, transparent), transparent)' }}
         />
         <p
-          className={`relative text-[11px] sm:text-[13px] md:text-sm lg:text-base font-semibold ${textAlign} transition-all duration-300`}
+          className={`relative text-[10px] sm:text-[12px] md:text-[13px] lg:text-sm font-semibold ${textAlign} transition-all duration-300`}
           style={{ color: palette.deep }}
         >
-          {member.Name}
+          {toTitleCase(member.Name)}
         </p>
         {showRole && member.RoleTitle && (
           <p
@@ -298,7 +389,7 @@ export function Entourage() {
       return (
         <div className="mb-2 sm:mb-2.5 md:mb-3">
           <SectionTitle>{singleTitle}</SectionTitle>
-          <div className={`grid grid-cols-1 min-[350px]:grid-cols-2 gap-x-6 sm:gap-x-8 md:gap-x-12 gap-y-0.5 sm:gap-y-1 md:gap-y-1 ${centerContent ? 'max-w-2xl mx-auto' : ''}`}>
+          <div className={`grid grid-cols-1 min-[350px]:grid-cols-2 gap-x-4 sm:gap-x-5 md:gap-x-8 gap-y-0.5 sm:gap-y-1 md:gap-y-1 ${centerContent ? 'max-w-2xl mx-auto' : ''}`}>
             {children}
           </div>
         </div>
@@ -307,7 +398,7 @@ export function Entourage() {
 
     return (
       <div className="mb-2 sm:mb-2.5 md:mb-3">
-        <div className="grid grid-cols-1 min-[350px]:grid-cols-2 gap-x-8 sm:gap-x-12 md:gap-x-16 mb-2 sm:mb-2.5 md:mb-3">
+        <div className="grid grid-cols-1 min-[350px]:grid-cols-2 gap-x-4 sm:gap-x-6 md:gap-x-10 mb-2 sm:mb-2.5 md:mb-3">
           {leftTitle && (
             <SectionTitle align="right" className="pr-2 sm:pr-3 md:pr-4">{leftTitle}</SectionTitle>
           )}
@@ -315,7 +406,7 @@ export function Entourage() {
             <SectionTitle align="left" className="pl-2 sm:pl-3 md:pl-4">{rightTitle}</SectionTitle>
           )}
         </div>
-        <div className={`grid grid-cols-1 min-[350px]:grid-cols-2 gap-x-6 sm:gap-x-8 md:gap-x-12 gap-y-0.5 sm:gap-y-1 md:gap-y-1 ${centerContent ? 'max-w-2xl mx-auto' : ''}`}>
+        <div className={`grid grid-cols-1 min-[350px]:grid-cols-2 gap-x-4 sm:gap-x-5 md:gap-x-8 gap-y-0.5 sm:gap-y-1 md:gap-y-1 ${centerContent ? 'max-w-2xl mx-auto' : ''}`}>
           {children}
         </div>
       </div>
@@ -347,6 +438,38 @@ export function Entourage() {
             backgroundImage:
               "repeating-linear-gradient(90deg, rgba(255,255,255,0.0) 0, rgba(255,255,255,0.0) 32px, rgba(255,255,255,0.24) 33px, rgba(255,255,255,0.24) 34px)",
           }}
+        />
+
+        {/* ── Airplane silhouette background decorations ── */}
+        <AirplaneSilhouette
+          size={200}
+          className="opacity-[0.10]"
+          style={{ top: '4%', left: '2%', transform: 'rotate(-20deg)' }}
+        />
+        <AirplaneSilhouette
+          size={130}
+          className="opacity-[0.08]"
+          style={{ top: '16%', right: '4%', transform: 'rotate(30deg)' }}
+        />
+        <AirplaneSilhouette
+          size={110}
+          className="opacity-[0.09]"
+          style={{ top: '44%', left: '1%', transform: 'rotate(15deg)' }}
+        />
+        <AirplaneSilhouette
+          size={160}
+          className="opacity-[0.10]"
+          style={{ bottom: '18%', right: '2%', transform: 'rotate(-35deg)' }}
+        />
+        <AirplaneSilhouette
+          size={90}
+          className="opacity-[0.07]"
+          style={{ bottom: '5%', left: '10%', transform: 'rotate(50deg)' }}
+        />
+        <AirplaneSilhouette
+          size={120}
+          className="opacity-[0.08]"
+          style={{ top: '68%', right: '12%', transform: 'rotate(-10deg)' }}
         />
       </div>
 
@@ -394,6 +517,9 @@ export function Entourage() {
           priority={false}
         />
       </div>
+
+      {/* Plane trail animation */}
+      <PlaneTrail />
 
       {/* Section Header */}
       <div className={`relative z-30 text-center mb-4 sm:mb-5 md:mb-6 px-3 sm:px-4 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}>
@@ -459,8 +585,63 @@ export function Entourage() {
             ) : (
             <>
               {ROLE_CATEGORY_ORDER.map((category, categoryIndex) => {
+
+                // Handle all three secondary sponsor types together (Candle comes first in order)
+                if (category === "Candle Sponsors") {
+                  const candleMembers = grouped["Candle Sponsors"] || []
+                  const veilMembers = grouped["Veil Sponsors"] || []
+                  const cordMembers = grouped["Cord Sponsors"] || []
+                  const hasAny = candleMembers.length > 0 || veilMembers.length > 0 || cordMembers.length > 0
+                  if (!hasAny) return null
+
+                  const renderSubSection = (title: string, subMembers: EntourageMember[]) => {
+                    if (subMembers.length === 0) return null
+                    return (
+                      <TwoColumnLayout key={title} singleTitle={title} centerContent={true}>
+                        {subMembers.length === 2 ? (
+                          <>
+                            <div className="px-1.5 sm:px-2 md:px-2.5">
+                              <NameItem member={subMembers[0]} align="right" />
+                            </div>
+                            <div className="px-1.5 sm:px-2 md:px-2.5">
+                              <NameItem member={subMembers[1]} align="left" />
+                            </div>
+                          </>
+                        ) : (
+                          <div className="col-span-full">
+                            <div className="max-w-sm mx-auto flex flex-col items-center gap-0.5 sm:gap-1">
+                              {subMembers.map((m, idx) => (
+                                <NameItem key={`${title}-${idx}-${m.Name}`} member={m} align="center" />
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </TwoColumnLayout>
+                    )
+                  }
+
+                  return (
+                    <div key="SecondarySponsors">
+                      {categoryIndex > 0 && (
+                        <div className="flex justify-center py-2 sm:py-2.5 md:py-3 mb-2 sm:mb-2.5 md:mb-3">
+                          <div className="w-full max-w-md h-px" style={{ background: 'linear-gradient(to right, transparent, color-mix(in srgb, var(--color-motif-medium) 31%, transparent), transparent)' }}></div>
+                        </div>
+                      )}
+                      <div className="mb-1.5 sm:mb-2 md:mb-2.5">
+                        <SectionTitle>Secondary Sponsors</SectionTitle>
+                      </div>
+                      {renderSubSection("Candle", candleMembers)}
+                      {renderSubSection("Veil", veilMembers)}
+                      {renderSubSection("Cord", cordMembers)}
+                    </div>
+                  )
+                }
+
+                // Skip Veil and Cord individually — they're rendered inside the Candle block above
+                if (category === "Veil Sponsors" || category === "Cord Sponsors") return null
+
                 const members = grouped[category] || []
-                
+
                 if (members.length === 0) return null
                 if (HIDDEN_ROLE_CATEGORIES.has(category)) return null
 
@@ -786,74 +967,6 @@ export function Entourage() {
                   }
                   // Skip rendering for "Groomsmen" since it's already rendered above
                   return null
-                }
-
-                // Special handling: Add "Secondary Sponsors" label above Candle Sponsors
-                if (category === "Candle Sponsors") {
-                  return (
-                    <div key={category}>
-                      {categoryIndex > 0 && (
-                        <div className="flex justify-center py-2 sm:py-2.5 md:py-3 mb-2 sm:mb-2.5 md:mb-3">
-                          <div className="w-full max-w-md h-px" style={{ background: 'linear-gradient(to right, transparent, color-mix(in srgb, var(--color-motif-medium) 31%, transparent), transparent)' }}></div>
-                        </div>
-                      )}
-                      {/* Secondary Sponsors label */}
-                      <div className="mb-1.5 sm:mb-2 md:mb-2.5">
-                        <SectionTitle>Secondary Sponsors</SectionTitle>
-                      </div>
-                      <TwoColumnLayout singleTitle={category} centerContent={true}>
-                        {(() => {
-                          const PAIRED_SECTIONS = new Set(["Candle Sponsors", "Cord Sponsors", "Veil Sponsors"])
-                          if (PAIRED_SECTIONS.has(category) && members.length === 2) {
-                            const left = members[0]
-                            const right = members[1]
-                            return (
-                              <>
-                                <div className="px-1.5 sm:px-2 md:px-2.5">
-                                  <NameItem member={left} align="right" />
-                                </div>
-                                <div className="px-1.5 sm:px-2 md:px-2.5">
-                                  <NameItem member={right} align="left" />
-                                </div>
-                              </>
-                            )
-                          }
-                          if (members.length <= 2) {
-                            return (
-                              <div className="col-span-full">
-                                <div className="max-w-sm mx-auto flex flex-col items-center gap-0.5 sm:gap-1 md:gap-1">
-                                  {members.map((member, idx) => (
-                                    <NameItem key={`${category}-${idx}-${member.Name}`} member={member} align="center" />
-                                  ))}
-                                </div>
-                              </div>
-                            )
-                          }
-                          // Default two-column sections: render row-by-row pairs
-                          const half = Math.ceil(members.length / 2)
-                          const left = members.slice(0, half)
-                          const right = members.slice(half)
-                          const maxLen = Math.max(left.length, right.length)
-                          const rows = []
-                          for (let i = 0; i < maxLen; i++) {
-                            const l = left[i]
-                            const r = right[i]
-                            rows.push(
-                              <React.Fragment key={`${category}-row-${i}`}>
-                                <div key={`${category}-cell-left-${i}`} className="px-1.5 sm:px-2 md:px-2.5">
-                                  {l ? <NameItem member={l} align="right" /> : <div className="py-0.5 sm:py-1 md:py-1.5" />}
-                                </div>
-                                <div key={`${category}-cell-right-${i}`} className="px-1.5 sm:px-2 md:px-2.5">
-                                  {r ? <NameItem member={r} align="left" /> : <div className="py-0.5 sm:py-1 md:py-1.5" />}
-                                </div>
-                              </React.Fragment>
-                            )
-                          }
-                          return rows
-                        })()}
-                      </TwoColumnLayout>
-                    </div>
-                  )
                 }
 
                 // Default: single title, centered content

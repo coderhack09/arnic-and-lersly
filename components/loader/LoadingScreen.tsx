@@ -4,6 +4,44 @@ import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import { siteConfig } from '@/content/site';
 
+// ─── Plane trail (unique IDs so they don't clash with Hero's SVG) ─────────────
+const PlaneTrail: React.FC = () => {
+  const pathData =
+    'M 500,50 C 400,100 200,50 250,200 C 300,350 450,300 400,400 C 350,500 150,350 150,450 C 150,550 300,600 350,700 C 400,800 500,850 600,900';
+  const dur = 8;
+  return (
+    <div className="absolute inset-0 pointer-events-none z-10 w-full h-full">
+      <svg viewBox="0 0 600 1000" className="w-full h-full opacity-35" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <mask id="loadingTrailMask">
+            <path d={pathData} fill="none" stroke="white" strokeWidth="8"
+              strokeDasharray="3000" strokeDashoffset="3000">
+              <animate attributeName="stroke-dashoffset" from="3000" to="0"
+                dur={`${dur}s`} repeatCount="indefinite" calcMode="linear" />
+            </path>
+          </mask>
+          <filter id="loadingPencil" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+          </filter>
+        </defs>
+        <path d={pathData} fill="none" style={{ stroke: 'var(--color-motif-cream)' }}
+          strokeWidth="1.5" strokeDasharray="6,10" strokeLinecap="round"
+          filter="url(#loadingPencil)" mask="url(#loadingTrailMask)" />
+        <g>
+          <path
+            d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+            style={{ fill: 'var(--color-motif-deep)' }}
+            transform="scale(1.4) rotate(90, 10.5, 12) translate(-10.5, -12)"
+          />
+          <animateMotion dur={`${dur}s`} repeatCount="indefinite" rotate="auto"
+            path={pathData} calcMode="paced" />
+        </g>
+      </svg>
+    </div>
+  );
+};
+
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -11,13 +49,13 @@ interface LoadingScreenProps {
 
 // Countdown boxes with color photos - numbers show days, hours, minutes
 const COUNTDOWN_BOXES = [
-  { src: '/frontboxes/box (1).webp' },
-  { src: '/frontboxes/box (2).webp' },
-  { src: '/frontboxes/box (3).webp' },
+  { src: '/frontboxes/box1.webp' },
+  { src: '/frontboxes/box2.webp' },
+  { src: '/frontboxes/box3.webp' },
 ];
 
-const MAIN_BW_IMAGE = '/frontboxes/Front.webp';
-const DESKTOP_BW_IMAGE = '/frontboxes/desktopView.JPG';
+const MAIN_BW_IMAGE = '/frontboxes/mobile.webp';
+const DESKTOP_BW_IMAGE = '/frontboxes/desktop.webp';
 const STAGGER_DELAY_MS = 4000; // Each image appears every 4 seconds
 const BOX_TRANSITION_MS = 1200; // Slow, smooth transition
 const TOTAL_DURATION_MS = COUNTDOWN_BOXES.length * STAGGER_DELAY_MS + 3000;
@@ -158,6 +196,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         />
       </div>
 
+      {/* Plane trail — above background, below content */}
+      <PlaneTrail />
+
       <div className="relative flex flex-col flex-1 min-h-0">
         {/* Top: headline + hashtag + countdown (readable over photo, no container) */}
         <div className="flex flex-col items-center justify-center w-full pt-12 sm:pt-16 md:pt-24 px-4 sm:px-6 flex-shrink-0">
@@ -168,16 +209,34 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                 style={{ backgroundColor: 'var(--color-motif-cream)' }}
               />
               <p className="text-center">
+                {/* Passport cover badge — claret leather with gold embossed text */}
                 <span
-                  className="inline-block text-[10px] sm:text-xs tracking-[0.28em] sm:tracking-[0.36em] font-[family-name:'Cinzel', serif] uppercase px-3 py-1.5 rounded-full backdrop-blur-sm border"
+                  className="inline-block uppercase px-10 sm:px-14 py-3 sm:py-4"
                   style={{
-                    color: 'var(--color-motif-deep)',
-                    backgroundColor: 'var(--color-motif-cream)',
-                    borderColor: 'var(--color-motif-deep)',
-                    textShadow: '0 1px 0 palette.soft',
+                    fontFamily: '"Playfair Display", "Georgia", serif',
+                    fontWeight: 700,
+                    fontSize: 'clamp(1.1rem, 4vw, 1.6rem)',
+                    letterSpacing: '0.55em',
+                    color: '#D4AF37',
+                    /* layered radial gradients simulate the mottled leather texture of a passport cover */
+                    background: [
+                      'radial-gradient(ellipse at 18% 30%, rgba(255,255,255,0.07) 0%, transparent 55%)',
+                      'radial-gradient(ellipse at 82% 70%, rgba(0,0,0,0.18) 0%, transparent 55%)',
+                      'radial-gradient(ellipse at 50% 50%, rgba(158,42,77,0.35) 0%, transparent 70%)',
+                      'var(--color-motif-deep)',
+                    ].join(', '),
+                    border: '1.5px solid var(--color-motif-cream)',
+                    /* inner glow + outer depth */
+                    boxShadow: [
+                      'inset 0 1px 0 rgba(255,255,255,0.08)',
+                      'inset 0 -1px 0 rgba(0,0,0,0.3)',
+                      '0 4px 14px rgba(103,6,38,0.45)',
+                    ].join(', '),
+                    /* stamped-gold text shadow */
+                    textShadow: '0 1px 0 rgba(0,0,0,0.5), 0 0 12px rgba(212, 42, 77, 0.35)',
                   }}
                 >
-                  Your invitation is on its way
+                  PASSPORT
                 </span>
               </p>
               <span
@@ -186,28 +245,40 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
               />
             </div>
 
+            {/* Hashtag — passport stamp style, gold on claret */}
             <p className="text-center mb-4 sm:mb-5">
               <span
-                className="inline-block text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] font-[family-name:'Cinzel', serif] px-3 py-1.5 rounded-full backdrop-blur-sm border"
+                className="inline-block uppercase px-5 sm:px-7 py-1.5 sm:py-2"
                 style={{
-                  color: 'var(--color-motif-deep)',
-                  backgroundColor: 'var(--color-motif-cream)',
-                  borderColor: 'var(--color-motif-deep)',
-                  textShadow: '0 1px 0 palette.soft',
+                  fontFamily: '"Playfair Display", "Georgia", serif',
+                  fontWeight: 700,
+                  fontSize: 'clamp(0.6rem, 2vw, 0.78rem)',
+                  letterSpacing: '0.3em',
+                  color: '#D4AF37',
+                  background: [
+                    'radial-gradient(ellipse at 18% 30%, rgba(255,255,255,0.06) 0%, transparent 55%)',
+                    'radial-gradient(ellipse at 82% 70%, rgba(0,0,0,0.18) 0%, transparent 55%)',
+                    'var(--color-motif-deep)',
+                  ].join(', '),
+                  border: '1px solid #B8942A',
+                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.25), 0 3px 10px rgba(103,6,38,0.4)',
+                  textShadow: '0 1px 0 rgba(0,0,0,0.45), 0 0 10px rgba(212,175,55,0.3)',
                 }}
               >
                 {hashtag}
               </span>
             </p>
 
+            {/* Countdown text — Playfair Display, cream with gold glow */}
             <h2 className="text-center">
               <span
-                className="inline-block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[0.08em] sm:tracking-[0.12em] uppercase max-w-md mx-auto leading-tight px-2"
+                className="inline-block font-bold tracking-[0.12em] sm:tracking-[0.18em] uppercase leading-tight px-2"
                 style={{
-                  fontFamily: '"Cinzel", serif',
-                  color: 'var(--color-motif-cream)',
-                  textShadow:
-                    '0 2px 14px rgba(0,0,0,0.55), 0 0 22px var(--color-motif-accent), 0 0 44px var(--color-motif-deep)',
+                  fontFamily: '"Playfair Display", "Georgia", serif',
+                  fontWeight: 700,
+                  fontSize: 'clamp(1.5rem, 6vw, 3.5rem)',
+                  color: 'var(--color-motif-deep)',
+                  textShadow: '0 2px 14px rgba(0,0,0,0.6), 0 0 28px rgba(212,175,55,0.25)',
                 }}
               >
                 {countdownText}
@@ -250,18 +321,31 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                   }}
                 />
 
-                {/* Bold debut date number + label - centered at bottom */}
-                <div className="absolute bottom-2 inset-x-0 sm:bottom-3 flex flex-col items-center">
+                {/* Date number + label — Playfair Display, gold passport feel */}
+                <div className="absolute bottom-2 inset-x-0 sm:bottom-3 flex flex-col items-center px-1">
                   <span
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black select-none leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+                    className="select-none leading-none"
                     style={{
-                      fontFamily: 'var(--font-granika), sans-serif',
-                      color: 'var(--color-motif-soft)',
+                      fontFamily: '"Playfair Display", "Georgia", serif',
+                      fontWeight: 900,
+                      fontSize: 'clamp(1.8rem, 7vw, 3.5rem)',
+                      color: 'var(--color-motif-cream)',
+                      textShadow: '0 2px 8px rgba(0,0,0,0.55), 0 0 16px rgba(212,175,55,0.4)',
                     }}
                   >
                     {countdownNumbers[i]}
                   </span>
-                  <span className="text-[8px] sm:text-[9px] tracking-widest uppercase mt-0.5 text-[rgba(255,246,248,0.85)]">
+                  <span
+                    className="mt-1 uppercase"
+                    style={{
+                      fontFamily: '"Playfair Display", "Georgia", serif',
+                      fontWeight: 700,
+                      fontSize: 'clamp(0.45rem, 1.5vw, 0.6rem)',
+                      letterSpacing: '0.25em',
+                      color: 'rgba(255,246,248,0.9)',
+                      textShadow: '0 1px 4px rgba(0,0,0,0.5)',
+                    }}
+                  >
                     {countdownLabels[i]}
                   </span>
                 </div>
@@ -272,47 +356,77 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
         {/* Bottom: Names + production credit + progress bar */}
         <div className="flex flex-col items-center justify-center w-full py-6 sm:py-8 px-4 flex-shrink-0">
+
+          {/* "Almost ready for" — Playfair Display italic, gold-tinted cream */}
           <p
-            className="text-center text-sm sm:text-base tracking-[0.18em] uppercase text-[family-name:var(--font-crimson)] mb-2"
-            style={{ color: 'var(--color-motif-deep)' }}
+            className="text-center mb-1"
+            style={{
+              fontFamily: '"Cinzel", serif',
+              fontWeight: 400,
+              fontStyle: 'italic',
+              fontSize: 'clamp(0.65rem, 2vw, 0.85rem)',
+              letterSpacing: '0.2em',
+              color: 'var(--color-motif-cream)',
+              textShadow: '0 1px 4px rgba(0,0,0,0.4)',
+            }}
           >
             Almost ready for
           </p>
+
+          {/* Couple names — Great Vibes script, large, cream */}
           <div
-            className="text-center text-2xl sm:text-3xl md:text-4xl mb-2"
+            className="text-center mb-2"
             style={{
               fontFamily: '"Cinzel", serif',
-              color: 'var(--color-motif-deep)',
-              textShadow: '0 2px 10px var(--color-motif-deep)35',
+              fontWeight: 400,
+              fontSize: 'clamp(2rem, 7vw, 3.5rem)',
+              color: 'var(--color-motif-cream)',
+              textShadow: '0 2px 12px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.2)',
             }}
           >
             {coupleNames}
           </div>
+
           {productionCredit && (
             <p
-              className="text-[10px] sm:text-xs font-sans tracking-wider"
-              style={{ color: 'var(--color-motif-soft)' }}
+              className="text-[10px] sm:text-xs tracking-wider"
+              style={{
+                fontFamily: '"Playfair Display", "Georgia", serif',
+                color: '#D4AF37',
+                opacity: 0.7,
+              }}
             >
               {productionCredit}
             </p>
           )}
-          {/* Preparing message + progress bar */}
+
+          {/* Progress label — Playfair Display italic */}
           <p
-            className="text-xs sm:text-sm tracking-[0.22em] mt-6 mb-3 font-[family-name:var(--font-crimson)] uppercase font-semibold"
-            style={{ color: 'var(--color-motif-cream)', textShadow: '0 2px 6px rgba(0,0,0,0.6)' }}
+            className="mt-5 mb-2 italic"
+            style={{
+              fontFamily: '"Playfair Display", "Georgia", serif',
+              fontWeight: 400,
+              fontSize: 'clamp(0.6rem, 1.8vw, 0.75rem)',
+              letterSpacing: '0.2em',
+              color: 'var(--color-motif-cream)',
+              textShadow: '0 1px 6px rgba(0,0,0,0.55)',
+            }}
           >
-            Crafting your invitation experience
+            Preparing your passport…
           </p>
+
+          {/* Progress bar — gold fill on muted track */}
           <div className="w-full max-w-xs mx-auto">
             <div
-              className="h-1.5 rounded-full overflow-hidden"
-              style={{ backgroundColor: 'rgba(255,255,255,0.25)' }}
+              className="h-1 rounded-full overflow-hidden"
+              style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
             >
               <div
-                className="h-full rounded-full transition-all duration-300 ease-out shadow-[0_0_12px_rgba(255,255,255,0.7)]"
+                className="h-full rounded-full transition-all duration-300 ease-out"
                 style={{
                   width: `${progress}%`,
-                  backgroundColor: 'var(--color-motif-accent)',
+                  background: 'linear-gradient(90deg, #9E2A4D, #9E2A4D, #9E2A4D)',
+                  boxShadow: '0 0 8px rgba(212, 42, 77, 0.6)',
                 }}
               />
             </div>

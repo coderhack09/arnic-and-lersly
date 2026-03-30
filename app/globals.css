@@ -1,6 +1,43 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Playfair Display — local font (relative to app/globals.css) */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("./playfair-display/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("./playfair-display/PlayfairDisplay-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("./playfair-display/PlayfairDisplay-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("./playfair-display/PlayfairDisplay-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("./playfair-display/PlayfairDisplay-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -88,12 +125,12 @@
   --font-serif: "Great Vibes", "Great Vibes Fallback";
 
   /* ─── Motif palette — edit here, affects every component ─── */
-  --color-motif-deep:    #9C5A63; /* deeper rose */
-  --color-motif-medium:  #D88C9A; /* muted pink */
-  --color-motif-accent:  #F2B5B5; /* pastel pink */
-  --color-motif-cream:   #FFF8F5; /* creamy white */
-  --color-motif-soft:    #F9E4E4; /* soft background */
-  --color-motif-silver:  #CFC7C7; /* luxury silver— borders, neutral separators   */
+  --color-motif-deep:    #670626;  /* Claret - main brand / headers */
+  --color-motif-medium:  #9E2A4D;  /* softened claret for buttons / hover */
+  --color-motif-accent:  #E75480;  /* vibrant pink accent */
+  --color-motif-cream:   #FFF4F7;  /* near-white background */
+  --color-motif-soft:    #F4C9D6;  /* Peony - cards / sections */
+  --color-motif-silver:  #D9D9D9;  /* neutral borders / subtle UI */
   /* ─────────────────────────────────────────────────────────── */
   --font-imperial-script: "Imperial Script", cursive;
   --color-background: var(--background);

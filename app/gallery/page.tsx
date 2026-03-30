@@ -16,7 +16,7 @@ const cormorant = Cormorant_Garamond({
 })
 
 // Match Details/Gallery palette
-const GALLERY_TEXT = "#9B6A41"
+const GALLERY_TEXT = "var(--color-motif-deep)"
 const GALLERY_DECO_FILTER =
   "brightness(0) saturate(100%) invert(32%) sepia(55%) saturate(900%) hue-rotate(355deg) brightness(95%) contrast(90%)"
 
@@ -48,13 +48,16 @@ export default async function GalleryPage() {
   const allImages = [...mobileImages, ...desktopImages]
   const images = allImages.map((src) => {
     const category = src.includes("mobile-background") ? "mobile" as const : "desktop" as const
-    return { src, category }
+    const width = category === "desktop" ? 1920 : 1080
+    const height = category === "desktop" ? 1080 : 1920
+    const orientation = category === "desktop" ? "landscape" as const : "portrait" as const
+    return { src, category, width, height, orientation }
   })
 
   return (
-    <main className="min-h-screen relative overflow-hidden bg-white">
+    <main className="min-h-screen relative overflow-hidden bg-motif-cream">
       {/* Background */}
-      <div className="absolute inset-0 -z-10 bg-white" />
+      <div className="absolute inset-0 -z-10 bg-motif-cream" />
       
       {/* Flower decoration - top left corner */}
       <div className="absolute left-0 top-0 z-0 pointer-events-none">

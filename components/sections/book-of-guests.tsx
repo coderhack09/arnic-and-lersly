@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Heart, RefreshCw, TrendingUp, Mail, Users, MapPin, Calendar, Crown } from "lucide-react"
 import { Cormorant_Garamond, Cinzel } from "next/font/google"
 import Image from "next/image"
@@ -33,6 +33,41 @@ interface Guest {
 }
 
 const CARDS_PER_VIEW = 4
+
+// ─── Plane trail ─────────────────────────────────────────────────────────────
+const PlaneTrail: React.FC = () => {
+  const pathData =
+    'M 60,80 C 160,160 320,100 360,240 C 400,380 240,410 280,540 C 320,660 500,590 530,720 C 560,850 440,910 500,980'
+  const dur = 10
+  return (
+    <div className="absolute inset-0 pointer-events-none z-10 w-full h-full overflow-hidden">
+      <svg viewBox="0 0 600 1000" className="w-full h-full opacity-45" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <mask id="guestsTrailMask">
+            <path d={pathData} fill="none" stroke="white" strokeWidth="8" strokeDasharray="3000" strokeDashoffset="3000">
+              <animate attributeName="stroke-dashoffset" from="3000" to="0" dur={`${dur}s`} repeatCount="indefinite" calcMode="linear" />
+            </path>
+          </mask>
+          <filter id="guestsPencil" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+          </filter>
+        </defs>
+        <path d={pathData} fill="none" style={{ stroke: 'var(--color-motif-medium)' }} strokeWidth="1.5" strokeDasharray="6,10" strokeLinecap="round" filter="url(#guestsPencil)" mask="url(#guestsTrailMask)" />
+        <g>
+          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" style={{ fill: 'var(--color-motif-deep)' }} transform="scale(1.4) rotate(90, 10.5, 12) translate(-10.5, -12)" />
+          <animateMotion dur={`${dur}s`} repeatCount="indefinite" rotate="auto" path={pathData} calcMode="paced" />
+        </g>
+      </svg>
+    </div>
+  )
+}
+
+const AirplaneSilhouette: React.FC<{ className?: string; style?: React.CSSProperties; size?: number }> = ({ className = '', style = {}, size = 120 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={`absolute pointer-events-none select-none ${className}`} style={style} aria-hidden>
+    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="var(--color-motif-medium)" />
+  </svg>
+)
 
 // Colors sourced from globals.css @theme inline — edit there to update everywhere
 const BOOK_ACCENT = "var(--color-motif-deep)"    // sage green — primary
@@ -189,6 +224,17 @@ export function BookOfGuests() {
         className="absolute inset-0 -z-10"
         style={{ backgroundColor: 'var(--color-motif-cream)' }}
       />
+
+      {/* Airplane silhouette background decorations */}
+      <AirplaneSilhouette size={200} className="opacity-[0.10]" style={{ top: '3%', left: '2%', transform: 'rotate(-20deg)' }} />
+      <AirplaneSilhouette size={130} className="opacity-[0.08]" style={{ top: '15%', right: '3%', transform: 'rotate(30deg)' }} />
+      <AirplaneSilhouette size={110} className="opacity-[0.09]" style={{ top: '45%', left: '1%', transform: 'rotate(15deg)' }} />
+      <AirplaneSilhouette size={160} className="opacity-[0.10]" style={{ bottom: '18%', right: '2%', transform: 'rotate(-35deg)' }} />
+      <AirplaneSilhouette size={90}  className="opacity-[0.07]" style={{ bottom: '4%', left: '10%', transform: 'rotate(50deg)' }} />
+      <AirplaneSilhouette size={120} className="opacity-[0.08]" style={{ top: '66%', right: '11%', transform: 'rotate(-10deg)' }} />
+
+      {/* Plane trail animation */}
+      <PlaneTrail />
 
       {/* Flower decoration — warm brown tint */}
       <div className="absolute left-0 top-0 z-0 pointer-events-none">

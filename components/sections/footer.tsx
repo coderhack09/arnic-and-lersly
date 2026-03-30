@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { motion } from "motion/react"
 import { Instagram, Twitter, Facebook, MapPin, Calendar, Clock, Heart, Music2 } from "lucide-react"
@@ -16,6 +16,41 @@ const cinzel = Cinzel({
   subsets: ["latin"],
   weight: ["400", "600"],
 })
+
+// ─── Plane trail ─────────────────────────────────────────────────────────────
+const PlaneTrail: React.FC = () => {
+  const pathData =
+    'M 70,60 C 170,140 330,90 370,230 C 410,370 250,400 290,530 C 330,650 510,580 540,710 C 570,840 450,905 510,975'
+  const dur = 10
+  return (
+    <div className="absolute inset-0 pointer-events-none z-10 w-full h-full overflow-hidden">
+      <svg viewBox="0 0 600 1000" className="w-full h-full opacity-45" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <mask id="footerTrailMask">
+            <path d={pathData} fill="none" stroke="white" strokeWidth="8" strokeDasharray="3000" strokeDashoffset="3000">
+              <animate attributeName="stroke-dashoffset" from="3000" to="0" dur={`${dur}s`} repeatCount="indefinite" calcMode="linear" />
+            </path>
+          </mask>
+          <filter id="footerPencil" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+          </filter>
+        </defs>
+        <path d={pathData} fill="none" style={{ stroke: 'var(--color-motif-medium)' }} strokeWidth="1.5" strokeDasharray="6,10" strokeLinecap="round" filter="url(#footerPencil)" mask="url(#footerTrailMask)" />
+        <g>
+          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" style={{ fill: 'var(--color-motif-deep)' }} transform="scale(1.4) rotate(90, 10.5, 12) translate(-10.5, -12)" />
+          <animateMotion dur={`${dur}s`} repeatCount="indefinite" rotate="auto" path={pathData} calcMode="paced" />
+        </g>
+      </svg>
+    </div>
+  )
+}
+
+const AirplaneSilhouette: React.FC<{ className?: string; style?: React.CSSProperties; size?: number }> = ({ className = '', style = {}, size = 120 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={`absolute pointer-events-none select-none ${className}`} style={style} aria-hidden>
+    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="var(--color-motif-medium)" />
+  </svg>
+)
 
 // Colors sourced from globals.css @theme inline — edit there to update everywhere
 const palette = {
@@ -128,9 +163,20 @@ export function Footer() {
           className="absolute inset-0 opacity-[0.08]"
           style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 15%, var(--color-motif-silver) 0%, transparent 55%)' }}
         />
+
+        {/* Airplane silhouette background decorations */}
+        <AirplaneSilhouette size={200} className="opacity-[0.10]" style={{ top: '3%', left: '2%', transform: 'rotate(-20deg)' }} />
+        <AirplaneSilhouette size={130} className="opacity-[0.08]" style={{ top: '15%', right: '3%', transform: 'rotate(30deg)' }} />
+        <AirplaneSilhouette size={110} className="opacity-[0.09]" style={{ top: '45%', left: '1%', transform: 'rotate(15deg)' }} />
+        <AirplaneSilhouette size={160} className="opacity-[0.10]" style={{ bottom: '18%', right: '2%', transform: 'rotate(-35deg)' }} />
+        <AirplaneSilhouette size={90}  className="opacity-[0.07]" style={{ bottom: '4%', left: '10%', transform: 'rotate(50deg)' }} />
+        <AirplaneSilhouette size={120} className="opacity-[0.08]" style={{ top: '66%', right: '11%', transform: 'rotate(-10deg)' }} />
       </div>
 
       <footer className="relative z-10 mt-12 sm:mt-16 overflow-hidden">
+      {/* Plane trail animation */}
+      <PlaneTrail />
+
       {/* Corner decorations — deep brown tint (hero style) */}
       <div className="absolute left-0 top-0 z-0 pointer-events-none">
         <Image src="/decoration/flower-decoration-left-bottom-corner2.png" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] scale-y-[-1]" priority={false} style={{ filter: DECO_FILTER }} />

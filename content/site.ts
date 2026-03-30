@@ -1,35 +1,35 @@
 export const siteConfig = {
   couple: {
-    bride: "Ronnie May Labordo", //Noenyl Bryle M. Gonzaga
-    brideNickname: "Nomay", //Ltryl
-    groom: "Kenneth Siman", //Ltryl B. Benitez
-    groomNickname: "Kenneth",
-    monogram:"/monogram/newmonogram.png" ,//Ltryl
-    backgroundMusic:"/background_music/Ed Sheeran - The Joker And The Queen (Lyrics) feat. Taylor Swift.mp3"
+    bride: "Aileen ", //Noenyl Bryle M. Gonzaga
+    brideNickname: "Aileen", //Ltryl
+    groom: "Arjay", //Ltryl B. Benitez
+    groomNickname: "Arjay",
+    monogram:"/monogram/monogram.png" ,//Ltryl
+    backgroundMusic:"/background_music/Bawat Daan - Zephanie (Lyrics)  The Killer Bride OST.mp3"
   },
   googleAPI:{
-    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSf0WUkTPmzeNx0nl7NQiHAzXB7X7uhK3lrX0SZPZKn0MX-6VQ/formResponse",
-    message: "https://script.google.com/macros/s/AKfycbyuP6pES5o5ZguyuUEW_TCe80YNmKkpOM3l_ED2YTFTeMDvEQ4VBgrNMxx3WBs10iR2Kw/exec",
-    guestList: "https://script.google.com/macros/s/AKfycbxiU8Tk0Lrhgy9Yz7ODpamVvhaIyVxibNHTd_1NTXaU6NEaDy2hx56XwkPw3NDpnCtDuw/exec",
-    guestRequest: "https://script.google.com/macros/s/AKfycbyDBijMrRGWbqeE7ipotE7KTritduviNlT0wdZ-TBp44ttdejaRHeJSD1_0zfyxN3lU/exec",
-    entourage: "https://script.google.com/macros/s/AKfycbxDJuS4w9hlf9N0VYS6qbGN43uJBVGYgiGFdPg-xwrUCkURkHAbFhRgFuY-m4DNxk6pow/exec",
-    sponsors: "https://script.google.com/macros/s/AKfycbzYWENhNcIed-cIUzQUDD8JZavcjQ1n5ulNYEdsQfWSRIEZfQG8W06tik3dzpIutM2IWQ/exec",
-    weddingDetails: "https://script.google.com/macros/s/AKfycbzRaNGHVEwL9K9-7w7vA0PY8nBjPOQdq7ODmOFMcJuOeVCPGpeBzrulwn8pgPBKlus--g/exec",
+    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLScFmpNtAI3vx2FKRaMIE38Kcn0w9ajHtz7CYn6CYgQ8yKqAng/formResponse", // Done
+    message: "https://script.google.com/macros/s/AKfycbxHVPlMl8Gr7zn7uTYjHMRBV1ilwl6iwZv3Hw9BRLLLxEBO6jOkeOSkreWtLn6eaRE/exec", // Done
+    guestList: "https://script.google.com/macros/s/AKfycbzL6ttJBIevhfC7Aq_O7vTUtWMMrpprEiMuKTfw1qU72DqDTQT_msKvcOtqRjzH-Iuu/exec", // Done
+    guestRequest: "https://script.google.com/macros/s/AKfycbz7uCDN6_bFZxiwePmHpIVH35WL_X7z_jOXGY3-hYsZYJhxY298XX9X8RG5kOhKHB5b/exec", // Done
+    entourage: "https://script.google.com/macros/s/AKfycbzukpfFmGP8W7tv9u7SqprUU2kuLEkIjNgtqTyqCkmGBias1feOaopqFtJm99TZj_w/exec", // Done
+    sponsors: "https://script.google.com/macros/s/AKfycbzcMPUhxD2jMQzqMsWi3XU2kL1z9quwjrreQl74NEU5wkqwL1tVTYTi46VCaWsKNx9J/exec", // Done
+    weddingDetails: "https://script.google.com/macros/s/AKfycby8ljaUPYe5AfxkQUCVQ7rYYAbRAuuYiPxRVDqKgJkki8pDK__hF2_UNqMWf9kijelw/exec",
 ////google share
-    googleShare: "https://docs.google.com/spreadsheets/d/17ji99dMUexZD77VGYWLv8n4VoKcpK0PmkhXrpcUx31o/edit?usp=sharing",
+    googleShare: "https://docs.google.com/spreadsheets/d/1H_MQtvzAWaWjmcP4m1y-ZuNzJWoe9SYy9E5CaVJfSwA/edit?usp=sharing",
   },
   wedding: {
-    date: "June 24, 2026",
+    date: "May 8, 2026",
     time: "2:30 PM",
-    venue: "Our Lady of Lourdes Parish",
+    venue: "Iglesia Ni Cristo, Nasugbu, Batangas",
     tagline: "are getting married!",
     theme: "Our wedding palette is inspired by timeless elegance and warmth.Motif Colors: Champagne Gold, Soft Beige, Warm Soft Brown",
     motif: "#9CAA99, #C4D1E2, #8799A7, #997C76, #A9A9A9, #D5D1C8",
   },
   details: {
     rsvp: {
-      deadline: "June 10, 2026.",
-      contact: "Kenneth Siman",
+      deadline: "May 5, 2026.",
+      contact: "Ronnie May Labordo",
       phone: "0927 815 3245",
     },
   },
@@ -48,38 +48,38 @@ export const siteConfig = {
     }
   },
   ceremony: {
-    location: "Our Lady of Lourdes Parish",
-    venue: "Our Lady of Lourdes Parish — Tagaytay",
-    date: "June 24, 2026",
-    day: "Wednesday",
+    location: "Iglesia Ni Cristo, Nasugbu, Batangas",
+    venue: "JP Laurel St., Nasugbu, Batangas City",
+    date: "May 8, 2026",
+    day: "Friday",
     time: "2:30 PM",
     entourageTime: "2:00 PM",
     guestsTime: "2:30 PM",
     image: "/Details/ceremony.png",
   },
   reception: {
-    location: "Infinity Tagaytay Events Place",
-    venue: "Infinity Tagaytay Events Place",
-    date: "June 24, 2026",
+    location: "Events Place Hermosas, Mataywanac, Tuy, Batangas",
+    venue: "Kalye Pogi, 51 Mataywanac, Kabituls, Tuy, 4214 Batangas",
+    date: "May 8, 2026",
     time: "4:00 PM",
-    image: ["/Details/reception.png", "/Details/reception2.png"],
+    image: ["/Details/Reception.png", "/Details/Reception2.png"],
   },
   dressCode: {
       theme: "SEMI-FORMAL",
-    colors: "#E8E0D5, #D1AD97, #C49E92, #C19A83, #9A7A6B",
+    colors: "#670626, #9E2A4D, #E75480, #F7CDCF, #FFF4F7",
     sponsors: {
       male: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       female: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       notes: "Barong Tagalog and Long Gowns in curated shades of brown",
       photo: "/Details/sponsors.png",
-      palette: "#E8E0D5, #D1AD97, #C49E92, #C19A83, #9A7A6B"
+      palette: "#670626, #9E2A4D, #E75480, #F7CDCF, #FFF4F7"
     },
     guests: {
       gents: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       ladies: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
-      notes: "Barong Tagalog and Long Gowns in curated shades of brown",
+      notes: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed.",
       photo: "/Details/guest.png",
-      palette: "#E8E0D3, #D1AD97, #C49F90, #F7CDCF, #DDB2AC"
+      palette: "#670626, #9E2A4D, #E75480, #F7CDCF, #FFF4F7"
     },
     note: "We kindly request our guests to dress in attire following our wedding palette."
   },
@@ -111,8 +111,8 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     secondary: "#F5F5DC",
   },
   snapShare: {
-    googleDriveLink: "https://drive.google.com/drive/folders/1OHc4gq4VHPequrPTjIrV6-YpZ5ctk9lo?usp=sharing",
-    hashtag: ["#NOMAYnatedForKenneth","#KENNETHLiveWithoutNomay"],
+    googleDriveLink: "https://drive.google.com/drive/folders/1pn69deI_kE_BqFtlDS-I-ey2SmMw5Geo?usp=sharing",
+    hashtag: ["#AileenandArjay","#ARJAYLiveWithoutAileen"],
     instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
   },
 }
