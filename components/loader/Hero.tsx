@@ -265,7 +265,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             <DashedRule ornament="circle" />
             <div className="flex flex-col items-center w-full gap-0 leading-none mt-2">
               <span style={{ fontFamily: '"Cinzel", serif', fontSize: 'clamp(3.5rem,15vw,5.5rem)', color: 'var(--color-motif-deep)', textShadow: '0 2px 12px rgba(103,6,38,0.2)', lineHeight: 1.05 }}>
-                {siteConfig.couple.groom}
+                {siteConfig.couple.groomNickname}
               </span>
               <div className="flex items-center gap-2 w-full my-0.5">
                 <div className="flex-1 border-t border-dashed" style={{ borderColor: 'var(--color-motif-soft)' }} />
@@ -273,7 +273,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
                 <div className="flex-1 border-t border-dashed" style={{ borderColor: 'var(--color-motif-soft)' }} />
               </div>
               <span style={{ fontFamily: '"Cinzel", serif', fontSize: 'clamp(3.5rem,15vw,5.5rem)', color: 'var(--color-motif-deep)', textShadow: '0 2px 12px rgba(103,6,38,0.2)', lineHeight: 1.05 }}>
-                {siteConfig.couple.bride}
+                {siteConfig.couple.brideNickname}
               </span>
             </div>
             <div className="mt-2 w-full"><DashedRule ornament="star" /></div>
@@ -356,7 +356,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             <DashedRule ornament="circle" />
             <div className="flex flex-col items-center w-full my-3 xl:my-4 leading-none">
               <span style={{ fontFamily: '"Great Vibes", cursive', fontSize: 'clamp(4.5rem, 8vw, 7rem)', color: 'var(--color-motif-deep)', textShadow: '0 3px 16px rgba(103,6,38,0.18)', lineHeight: 1 }}>
-                {siteConfig.couple.groom}
+                {siteConfig.couple.groomNickname}
               </span>
               <div className="flex items-center gap-3 w-full my-2">
                 <div className="flex-1 border-t border-dashed" style={{ borderColor: 'var(--color-motif-soft)' }} />
@@ -364,7 +364,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
                 <div className="flex-1 border-t border-dashed" style={{ borderColor: 'var(--color-motif-soft)' }} />
               </div>
               <span style={{ fontFamily: '"Great Vibes", cursive', fontSize: 'clamp(4.5rem, 8vw, 7rem)', color: 'var(--color-motif-deep)', textShadow: '0 3px 16px rgba(103,6,38,0.18)', lineHeight: 1 }}>
-                {siteConfig.couple.bride}
+                {siteConfig.couple.brideNickname}
               </span>
             </div>
             <DashedRule ornament="star" />
@@ -426,8 +426,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
 
             {/* Data fields grid */}
             <div className="grid grid-cols-2 gap-x-6 gap-y-3">
-              <Field label="Surname" value={siteConfig.couple.groom.toUpperCase()} size="md" />
-              <Field label="Given Name" value={siteConfig.couple.bride.toUpperCase()} size="md" />
+              <Field label="Groom Name" value={siteConfig.couple.groom.toUpperCase()} size="md" />
+              <Field label="Bride Name" value={siteConfig.couple.bride.toUpperCase()} size="md" />
               <Field label="Nationality" value="Filipino" size="md" />
               <Field label="Date of Issue" value={siteConfig.wedding.date} size="md" />
               <Field label="Date & Time" value={`${siteConfig.wedding.date} · ${siteConfig.wedding.time}`} wide size="md" />
