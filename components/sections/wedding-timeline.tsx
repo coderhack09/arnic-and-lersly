@@ -75,7 +75,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: "Let's dance the night away and celebrate this new chapter!",
     location: receptionVenue,
     icon: DanceIcon,
-    imageSrc: "/weddingtimeline/CockTailHour.png",
+    imageSrc: "/weddingtimeline/HappyHours.png",
   },
   {
     time: "3:00 PM",
@@ -83,7 +83,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: "Let's dance the night away and celebrate this new chapter!",
     location: receptionVenue,
     icon: DanceIcon,
-    imageSrc: "/weddingtimeline/dance.png",
+    imageSrc: "/weddingtimeline/music.png",
   }
 ]
 

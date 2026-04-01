@@ -4,7 +4,7 @@ export const siteConfig = {
     brideNickname: "Aileen", //Ltryl
     groom: "Arjay C. Credito", //Ltryl B. Benitez
     groomNickname: "Arjay",
-    monogram:"/monogram/newMonogram.png" ,//Ltryl
+    monogram:"/monogram/newfinal.png" ,//Ltryl
     backgroundMusic:"/background_music/Ebe Dancel - Bawat Daan (Official Music Video).mp3"
   },
   googleAPI:{
@@ -28,7 +28,7 @@ export const siteConfig = {
   },
   details: {
     rsvp: {
-      deadline: "May 5, 2026.",
+      deadline: "April 28, 2026.",
       contact: "Aileen Rosales Isla",
       phone: "0927 815 3245",
     },
