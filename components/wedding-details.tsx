@@ -54,14 +54,14 @@ export function WeddingDetails() {
             <div>
               <label className="text-sm font-medium text-[#6B7280] block mb-1">Groom</label>
               <p className="text-lg font-semibold text-[#111827]">
-                {siteConfig.couple.groomName}
+                {siteConfig.couple.groom}
               </p>
               <p className="text-sm text-[#6B7280]">"{siteConfig.couple.groomNickname}"</p>
             </div>
             <div className="border-t border-[#E5E7EB] pt-4">
               <label className="text-sm font-medium text-[#6B7280] block mb-1">Bride</label>
               <p className="text-lg font-semibold text-[#111827]">
-                {siteConfig.couple.brideName}
+                {siteConfig.couple.bride}
               </p>
               <p className="text-sm text-[#6B7280]">"{siteConfig.couple.brideNickname}"</p>
             </div>

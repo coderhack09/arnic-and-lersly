@@ -141,7 +141,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   }, [onComplete]);
 
   const coupleNames = `${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname}`;
-  const hashtag = '#AileenandArjay';
+  const hashtag = '#ArjayandAileen';
   const productionCredit = '';
 
 

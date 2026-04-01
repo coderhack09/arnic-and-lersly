@@ -749,7 +749,7 @@ export function Entourage() {
                           <div key="SponsorsAfterParents">
                             <div className="flex justify-center py-1.5 sm:py-2 md:py-2.5 mb-2 sm:mb-2.5 md:mb-3">
                             </div>
-                            <TwoColumnLayout singleTitle="Principal Sponsors" centerContent={true}>
+                            <TwoColumnLayout singleTitle="Principal Sponsors">
                               {sponsors.map((sponsor, idx) => (
                                 <React.Fragment key={`sponsor-row-${idx}`}>
                                   <div key={`sponsor-male-${idx}`} className="px-1.5 sm:px-2 md:px-2.5">
@@ -761,7 +761,7 @@ export function Entourage() {
                                           RoleTitle: "",
                                           Email: ""
                                         }} 
-                                        align="right" 
+                                        align="left" 
                                         showRole={false}
                                       />
                                     ) : (
@@ -777,7 +777,7 @@ export function Entourage() {
                                           RoleTitle: "",
                                           Email: ""
                                         }} 
-                                        align="left" 
+                                        align="right" 
                                         showRole={false}
                                       />
                                     ) : (
@@ -950,10 +950,10 @@ export function Entourage() {
                                 rows.push(
                                   <React.Fragment key={`bridal-row-${i}`}>
                                     <div key={`groomsman-cell-${i}`} className="px-1.5 sm:px-2 md:px-2.5">
-                                      {groomsman ? <NameItem member={groomsman} align="right" /> : <div className="py-0.5 sm:py-1 md:py-1.5" />}
+                                      {groomsman ? <NameItem member={groomsman} align="left" /> : <div className="py-0.5 sm:py-1 md:py-1.5" />}
                                     </div>
                                     <div key={`bridesmaid-cell-${i}`} className="px-1.5 sm:px-2 md:px-2.5">
-                                      {bridesmaid ? <NameItem member={bridesmaid} align="left" /> : <div className="py-0.5 sm:py-1 md:py-1.5" />}
+                                      {bridesmaid ? <NameItem member={bridesmaid} align="right" /> : <div className="py-0.5 sm:py-1 md:py-1.5" />}
                                     </div>
                                   </React.Fragment>
                                 )

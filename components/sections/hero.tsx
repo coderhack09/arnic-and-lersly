@@ -481,9 +481,9 @@ export function Hero() {
                   fontWeight: 400,
                 }}
             >
-              <span className="block">{brideName}</span>
-              <span className="block">&</span>
               <span className="block">{groomName}</span>
+              <span className="block">&</span>
+              <span className="block">{brideName}</span>
             </h1>
           </div>
 
@@ -560,7 +560,7 @@ export function Hero() {
                 textShadow: "0 2px 18px rgba(0,0,0,0.9)",
               }}
             >
-              {siteConfig.ceremony.venue}
+              {siteConfig.ceremony.location}
             </p>
           </div>
 

@@ -144,7 +144,7 @@ const PassportBooklet = () => {
             <Compass className="w-6 h-6 sm:w-8 sm:h-8 text-motif-cream/60" strokeWidth={1} />
           </div>
           <h2 className={`${cinzel.className} text-lg sm:text-2xl md:text-3xl tracking-[0.1em] uppercase text-motif-cream/90 text-center leading-snug`}>
-            {siteConfig.couple.bride} &amp; {siteConfig.couple.groom}
+            {siteConfig.couple.groomNickname} &amp; {siteConfig.couple.brideNickname}
           </h2>
           <div className="w-12 sm:w-16 h-px bg-motif-cream/20" />
           <p className={`${cormorant.className} text-xs sm:text-sm tracking-[0.2em] uppercase text-motif-cream/50 text-center`}>
@@ -237,7 +237,7 @@ export function LoveStory() {
         text={
           <>
             <p className="mb-4">
-              For twelve beautiful years, Aileen and Arjay have shared a love that grew from simple beginnings into something deeply rooted and enduring. Through laughter, challenges, distance, and dreams, their story has been a testament to patience, understanding, and the quiet strength of choosing each other every single day.
+              For twelve beautiful years, Arjay and Aileen have shared a love that grew from simple beginnings into something deeply rooted and enduring. Through laughter, challenges, distance, and dreams, their story has been a testament to patience, understanding, and the quiet strength of choosing each other every single day.
             </p>
           </>
         }
@@ -286,7 +286,7 @@ export function LoveStory() {
         text={
           <>
             <p>
-              Now, as they stand on the threshold of a new chapter, Aileen and Arjay choose to seal their story with a sacred vow. With hearts full of gratitude and faith, they step forward not just as partners, but as one—ready to build a life guided by love, hope, and God's grace.
+              Now, as they stand on the threshold of a new chapter, Arjay and Aileen choose to seal their story with a sacred vow. With hearts full of gratitude and faith, they step forward not just as partners, but as one—ready to build a life guided by love, hope, and God's grace.
             </p>
           </>
         }

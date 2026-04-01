@@ -214,7 +214,7 @@ export function Footer() {
         {/* Names & Date below illustration — dark text on white */}
         <div className="mt-3 sm:mt-4 md:mt-5 text-center">
           <p className={`${cormorant.className} tracking-[0.25em] sm:tracking-[0.3em] text-xs sm:text-sm md:text-base uppercase`} style={{ color: palette.deep }}>
-            {brideNickname} & {groomNickname}
+            {groomNickname} & {brideNickname}
           </p>
           <p className={`${cormorant.className} text-sm sm:text-base md:text-lg mt-1 sm:mt-2`} style={{ color: palette.deep }}>
             {ceremonyDate}
@@ -294,7 +294,7 @@ export function Footer() {
                   <div className={`space-y-2 sm:space-y-2.5 md:space-y-3 ${cormorant.className} text-xs sm:text-sm leading-relaxed`} style={{ color: palette.softBrown }}>
                     <div className="flex items-start gap-2 sm:gap-2.5 md:gap-3">
                       <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5 text-motif-deep" style={{ color: palette.background }} />
-                      <span className="text-motif-deep">{toTitleCase(ceremonyVenue)}</span>
+                      <span className="text-motif-deep">{toTitleCase(siteConfig.ceremony.location)}</span>
                     </div>
                     <div className="flex items-center gap-2 sm:gap-2.5 md:gap-3">
                       <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: palette.deep }} />
@@ -312,7 +312,7 @@ export function Footer() {
                   <div className={`space-y-2 sm:space-y-2.5 md:space-y-3 ${cormorant.className} text-xs sm:text-sm leading-relaxed`} style={{ color: palette.softBrown }}>
                     <div className="flex items-start gap-2 sm:gap-2.5 md:gap-3">
                       <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5" style={{ color: palette.deep }} />
-                      <span>{toTitleCase(receptionVenue)}</span>
+                      <span>{toTitleCase(siteConfig.reception.location)}</span>
                     </div>
                     <div className="flex items-center gap-2 sm:gap-2.5 md:gap-3">
                       <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: palette.deep }} />

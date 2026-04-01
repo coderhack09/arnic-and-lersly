@@ -4,8 +4,8 @@ export const siteConfig = {
     brideNickname: "Aileen", //Ltryl
     groom: "Arjay C. Credito", //Ltryl B. Benitez
     groomNickname: "Arjay",
-    monogram:"/monogram/monogram.png" ,//Ltryl
-    backgroundMusic:"/background_music/Bawat Daan - Zephanie (Lyrics)  The Killer Bride OST.mp3"
+    monogram:"/monogram/newMonogram.png" ,//Ltryl
+    backgroundMusic:"/background_music/Ebe Dancel - Bawat Daan (Official Music Video).mp3"
   },
   googleAPI:{
     messageForm: "https://docs.google.com/forms/d/e/1FAIpQLScFmpNtAI3vx2FKRaMIE38Kcn0w9ajHtz7CYn6CYgQ8yKqAng/formResponse", // Done
@@ -20,7 +20,7 @@ export const siteConfig = {
   },
   wedding: {
     date: "May 8, 2026",
-    time: "2:30 PM",
+    time: "9:00 AM",
     venue: "Iglesia Ni Cristo, Nasugbu, Batangas",
     tagline: "are getting married!",
     theme: "Our wedding palette is inspired by timeless elegance and warmth.Motif Colors: Champagne Gold, Soft Beige, Warm Soft Brown",
@@ -29,7 +29,7 @@ export const siteConfig = {
   details: {
     rsvp: {
       deadline: "May 5, 2026.",
-      contact: "Ronnie May Labordo",
+      contact: "Aileen Rosales Isla",
       phone: "0927 815 3245",
     },
   },
@@ -52,16 +52,16 @@ export const siteConfig = {
     venue: "JP Laurel St., Nasugbu, Batangas City",
     date: "May 8, 2026",
     day: "Friday",
-    time: "2:30 PM",
-    entourageTime: "2:00 PM",
-    guestsTime: "2:30 PM",
+    time: "9:00 AM",
+    entourageTime: "8:00 AM",
+    guestsTime: "8:30 AM",
     image: "/Details/ceremony.png",
   },
   reception: {
     location: "Events Place Hermosas, Mataywanac, Tuy, Batangas",
     venue: "Kalye Pogi, 51 Mataywanac, Kabituls, Tuy, 4214 Batangas",
     date: "May 8, 2026",
-    time: "4:00 PM",
+    time: "12:00 PM",
     image: ["/Details/Reception.png", "/Details/Reception2.png"],
   },
   dressCode: {
@@ -70,15 +70,15 @@ export const siteConfig = {
     sponsors: {
       male: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       female: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
-      notes: "Barong Tagalog and Long Gowns in curated shades of brown",
-      photo: "/Details/sponsors.png",
+      notes: "Barong Tagalog and long gowns in curated shades inspired by our wedding palette",
+      photo: "/Details/newsponsorsAttire.png",
       palette: "#670626, #9E2A4D, #E75480, #F7CDCF, #FFF4F7"
     },
     guests: {
       gents: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       ladies: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       notes: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed.",
-      photo: "/Details/guest.png",
+      photo: "/Details/newGuestAttire.png",
       palette: "#670626, #9E2A4D, #E75480, #F7CDCF, #FFF4F7"
     },
     note: "We kindly request our guests to dress in attire following our wedding palette."
@@ -112,7 +112,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   },
   snapShare: {
     googleDriveLink: "https://drive.google.com/drive/folders/1pn69deI_kE_BqFtlDS-I-ey2SmMw5Geo?usp=sharing",
-    hashtag: ["#AileenandArjay","#ARJAYLiveWithoutAileen"],
+    hashtag: ["#ToJAYtherForAIver","#HappyJAYverAIfter"],
     instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
   },
 }
