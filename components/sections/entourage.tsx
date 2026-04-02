@@ -68,9 +68,6 @@ function mapStaticEntourage(): EntourageMember[] {
   })
 }
 
-function toTitleCase(str: string): string {
-  return str.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
-}
 
 function mapStaticSponsors(): PrincipalSponsor[] {
   return staticSponsors
@@ -357,7 +354,7 @@ export function Entourage() {
           className={`relative text-[10px] sm:text-[12px] md:text-[13px] lg:text-sm font-semibold ${textAlign} transition-all duration-300`}
           style={{ color: palette.deep }}
         >
-          {toTitleCase(member.Name)}
+          {member.Name}
         </p>
         {showRole && member.RoleTitle && (
           <p

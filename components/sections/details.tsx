@@ -169,26 +169,25 @@ export function Details() {
     }
   }
 
-  // Venue information from site config
-  const ceremonyVenueName = siteConfig.ceremony.location
-  const ceremonyVenueDetail = ""
-  const ceremonyAddress = siteConfig.ceremony.venue
-  const ceremonyVenue = `${ceremonyVenueName}, ${ceremonyAddress}`
-  const ceremonyMapsLink = `https://maps.app.goo.gl/aV2PgzJ1VwF6ZKr18`
+ // Venue information from site config
+ const ceremonyVenueName = siteConfig.ceremony.location
+ const ceremonyAddress = siteConfig.ceremony.venue
+ const ceremonyVenue = `${ceremonyVenueName}, ${ceremonyAddress}`
+ const ceremonyMapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ceremonyVenue)}`
 
-  const receptionVenueName = siteConfig.reception.location
-  const receptionVenueDetail = ""
-  const receptionAddress = siteConfig.reception.venue
-  const receptionVenue = `${receptionVenueName}, ${receptionAddress}`
-  const receptionMapsLink = `https://maps.google.com/?q=${encodeURIComponent(receptionVenue)}`
+ const receptionVenueName = siteConfig.reception.location
+ const receptionAddress = siteConfig.reception.venue
+ const receptionVenue = `${receptionVenueName}, ${receptionAddress}`
+ const receptionMapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(receptionVenue)}`
 
-  // Aliases used in the image modal
-  const ceremonyLocationFormatted = ceremonyVenueName
-  const receptionLocationFormatted = receptionVenueName
-  const ceremonyLocation = ceremonyVenue
-  const receptionLocation = receptionVenue
-  const formattedCeremonyDate = siteConfig.ceremony.date
-  const formattedReceptionDate = siteConfig.ceremony.date // reception follows ceremony on same day
+ const ceremonyVenueDetail: string | undefined = undefined
+ const receptionVenueDetail: string | undefined = undefined
+ const ceremonyLocation = ceremonyVenue
+ const receptionLocation = receptionVenue
+ const ceremonyLocationFormatted = ceremonyVenue
+ const receptionLocationFormatted = receptionVenue
+ const formattedCeremonyDate = siteConfig.ceremony.date
+ const formattedReceptionDate = siteConfig.ceremony.date // reception follows ceremony on same day
 
   const DECO_FILTER = "brightness(0) saturate(100%) invert(39%) sepia(18%) saturate(486%) hue-rotate(62deg) brightness(94%) contrast(88%)"
 
@@ -831,7 +830,7 @@ export function Details() {
                 Arrival
                 </h4>
                 <p className={`${cormorant.className} text-sm sm:text-base md:text-lg text-motif-deep/80 leading-relaxed`}>
-                To ensure everything runs smoothly, please arrive at least 30 minutes before the ceremony starts. The program will begin at 3:30 PM, so we kindly ask everyone to arrive by 2:30 PM. This will give you time to find your seat, take in the beautiful setup, and be fully present for our special moment
+                To ensure everything runs smoothly, please arrive at least 30 minutes before the ceremony starts. The program will begin at {siteConfig.ceremony.time}, so we kindly ask everyone to be seated by {siteConfig.ceremony.guestsTime}. This will give you time to find your seat, take in the beautiful setup, and be fully present for our special moment
                 </p>
               </div>
 
