@@ -5,7 +5,7 @@ export const siteConfig = {
     groom: "Arjay C. Credito", //Ltryl B. Benitez
     groomNickname: "Arjay",
     monogram:"/monogram/newfinal.png" ,//Ltryl
-    backgroundMusic:"/background_music/Ebe Dancel - Bawat Daan (Official Music Video).mp3"
+    backgroundMusic:"/background_music/Ebe Dancel - Bawat Daan (Official Music Video)-trimmed.wav"
   },
   googleAPI:{
     messageForm: "https://docs.google.com/forms/d/e/1FAIpQLScFmpNtAI3vx2FKRaMIE38Kcn0w9ajHtz7CYn6CYgQ8yKqAng/formResponse", // Done
