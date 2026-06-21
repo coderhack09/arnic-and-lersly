@@ -10,7 +10,7 @@ export const siteConfig = {
   googleAPI:{
     messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdUE21x2i-3cIR1UDRCdkNkLxvf7akm0ObrHLmGGlszYumLBg/formResponse", // Done
     message: "https://script.google.com/macros/s/AKfycbyrv84_xSS7Zik7EQ6JtmgpH4bHlq3v8cp5ODu6olPRDHymlvtixDSkZ4qs20KjXVv_/exec",//done 
-    guestList: "https://script.google.com/macros/s/AKfycbwBjRCeyzhoKc4OwnqLFQGQHgNZWmQYjbbyVwTIIggFUiTF1pOWnb_z0MScAowF_2bn/exec",//done 
+    guestList: "https://script.google.com/macros/s/AKfycbzPRJl0Cmr5oXsGPv1emLldySBH_6nGzHKmbGS7Ktn_C-0LK5GFIt-Fhdqe9OJZrRE/exec",//done 
     guestRequest: "https://script.google.com/macros/s/AKfycbxJS608ZqkRdSwtDQ5pVSSHpp9U8toI9b9SXMmb28JCw0zqCtpCMNZGj-vTUld4JC6S/exec", //odne
     entourage: "https://script.google.com/macros/s/AKfycbwiIsWcXDkzBBLsDliRUfoAGZDRviac_opLWTwSu6diOklD2zSP9JenHV3r0E_OBgdd/exec", 
     sponsors: "https://script.google.com/macros/s/AKfycbzFwn1m69m18N9NPga-jEb6Rs3tw1r4BPiwDKyg-XRsT7KLlUOZ6zC5IAtSNQh6Owjt/exec", 
