@@ -61,7 +61,7 @@ export const siteConfig = {
     location: "Eusebio Sestoso Memorial Coliseum Poblacion",
     venue: "Eusebio Sestoso Memorial Coliseum Poblacion, Alcoy, Cebu Philippines",
     date: "July 4, 2026",
-    time: "12:00 PM",
+    time: "5:00 PM",
     image: ["/Details/ceremony.png", "/Details/ceremony.png"],
   },
   dressCode: {
