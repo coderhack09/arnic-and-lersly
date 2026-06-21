@@ -55,7 +55,7 @@ export const siteConfig = {
     time: "2:00 PM",
     entourageTime: "1:00 PM",
     guestsTime: "1:30 PM",
-    image: "/Details/church.png",
+    image: "/Details/new-church.png",
   },
   reception: {
     location: "Eusebio Sestoso Memorial Coliseum Poblacion",
