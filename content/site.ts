@@ -5,7 +5,7 @@ export const siteConfig = {
     groom: "Arnic Niño B. Gaña ", //Ltryl B. Benitez
     groomNickname: "Arnic",
     monogram:"/monogram/monog.png" ,//Ltryl
-    backgroundMusic:"/background_music/Ebe Dancel - Bawat Daan (Official Music Video)-trimmed (1) (1).mp3"
+    backgroundMusic:"/background_music/Your Love - Juris (Lyrics).mp3"
   },
   googleAPI:{
     messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdUE21x2i-3cIR1UDRCdkNkLxvf7akm0ObrHLmGGlszYumLBg/formResponse", // Done
