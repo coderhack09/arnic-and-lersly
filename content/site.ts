@@ -8,15 +8,15 @@ export const siteConfig = {
     backgroundMusic:"/background_music/Ebe Dancel - Bawat Daan (Official Music Video)-trimmed (1) (1).mp3"
   },
   googleAPI:{
-    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLScFmpNtAI3vx2FKRaMIE38Kcn0w9ajHtz7CYn6CYgQ8yKqAng/formResponse", // Done
-    message: "https://script.google.com/macros/s/AKfycbxHVPlMl8Gr7zn7uTYjHMRBV1ilwl6iwZv3Hw9BRLLLxEBO6jOkeOSkreWtLn6eaRE/exec", // Done
-    guestList: "https://script.google.com/macros/s/AKfycbzL6ttJBIevhfC7Aq_O7vTUtWMMrpprEiMuKTfw1qU72DqDTQT_msKvcOtqRjzH-Iuu/exec", // Done
-    guestRequest: "https://script.google.com/macros/s/AKfycbz7uCDN6_bFZxiwePmHpIVH35WL_X7z_jOXGY3-hYsZYJhxY298XX9X8RG5kOhKHB5b/exec", // Done
-    entourage: "https://script.google.com/macros/s/AKfycbzukpfFmGP8W7tv9u7SqprUU2kuLEkIjNgtqTyqCkmGBias1feOaopqFtJm99TZj_w/exec", // Done
-    sponsors: "https://script.google.com/macros/s/AKfycbzcMPUhxD2jMQzqMsWi3XU2kL1z9quwjrreQl74NEU5wkqwL1tVTYTi46VCaWsKNx9J/exec", // Done
-    weddingDetails: "https://script.google.com/macros/s/AKfycby8ljaUPYe5AfxkQUCVQ7rYYAbRAuuYiPxRVDqKgJkki8pDK__hF2_UNqMWf9kijelw/exec",
+    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdUE21x2i-3cIR1UDRCdkNkLxvf7akm0ObrHLmGGlszYumLBg/formResponse", // Done
+    message: "https://script.google.com/macros/s/AKfycbyrv84_xSS7Zik7EQ6JtmgpH4bHlq3v8cp5ODu6olPRDHymlvtixDSkZ4qs20KjXVv_/exec",//done 
+    guestList: "https://script.google.com/macros/s/AKfycbwBjRCeyzhoKc4OwnqLFQGQHgNZWmQYjbbyVwTIIggFUiTF1pOWnb_z0MScAowF_2bn/exec",//done 
+    guestRequest: "https://script.google.com/macros/s/AKfycbxJS608ZqkRdSwtDQ5pVSSHpp9U8toI9b9SXMmb28JCw0zqCtpCMNZGj-vTUld4JC6S/exec", //odne
+    entourage: "https://script.google.com/macros/s/AKfycbwiIsWcXDkzBBLsDliRUfoAGZDRviac_opLWTwSu6diOklD2zSP9JenHV3r0E_OBgdd/exec", 
+    sponsors: "https://script.google.com/macros/s/AKfycbzFwn1m69m18N9NPga-jEb6Rs3tw1r4BPiwDKyg-XRsT7KLlUOZ6zC5IAtSNQh6Owjt/exec", 
+    weddingDetails: "https://script.google.com/macros/s/AKfycbwtdWw1tV6KUp9IWSsmDnXaOi2yyAaH7NfXLGaegAovo-LxqjM7vGED3uZ2-JFHcK5n/exec",
 ////google share
-    googleShare: "https://docs.google.com/spreadsheets/d/1H_MQtvzAWaWjmcP4m1y-ZuNzJWoe9SYy9E5CaVJfSwA/edit?usp=sharing",
+    googleShare: "https://docs.google.com/spreadsheets/d/1OgSl5TZyFNC9rVRakU0MKQkJJod_yehFYe6Slox1rdk/edit?usp=sharing",
   },
   wedding: {
     date: "July 4, 2026",
@@ -111,7 +111,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     secondary: "#F5F5DC",
   },
   snapShare: {
-    googleDriveLink: "https://drive.google.com/drive/folders/1pn69deI_kE_BqFtlDS-I-ey2SmMw5Geo?usp=sharing",
+    googleDriveLink: "https://drive.google.com/drive/folders/1YJin4oO1Yx8F_piZ3rthrvt7JtBFPbf2?usp=sharing",
     hashtag: ["#ArnicAndLerslyForever","#ArnicAndLerslyBoardingForLife"],
     instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
   },
