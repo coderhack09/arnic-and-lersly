@@ -62,7 +62,7 @@ const palette = {
 } as const
 
 const DECO_FILTER =
-  "brightness(0) saturate(100%) invert(41%) sepia(14%) saturate(965%) hue-rotate(309deg) brightness(92%) contrast(88%)"
+  "brightness(0) saturate(100%) invert(16%) sepia(67%) saturate(1816%) hue-rotate(211deg) brightness(91%) contrast(98%)";
 
 // Helper function to convert text to title case (first letter of each word uppercase)
 const toTitleCase = (str: string) => {

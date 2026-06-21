@@ -21,7 +21,7 @@ const cinzel = Cinzel({
 
 // QRCodeCanvas renders to <canvas> which cannot resolve CSS variables.
 // This hex must match --color-motif-deep defined in globals.css.
-const MOTIF_DEEP_HEX = "#5B6655"
+const MOTIF_DEEP_HEX = "#071B4D"
 
 export function SnapShare() {
   const [copiedHashtagIndex, setCopiedHashtagIndex] = useState<number | null>(null)
@@ -268,21 +268,21 @@ export function SnapShare() {
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <Image src="/mobile-background/couple (1).webp" alt="Wedding moment 1" fill className="object-cover" style={{ imageOrientation: "from-image" }} />
+                    <Image src="/mobile-background/couple (4).jpeg" alt="Wedding moment 1" fill className="object-cover" style={{ imageOrientation: "from-image" }} />
                   </motion.div>
                   <motion.div
                     className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden shadow-md border-2 border-motif-medium/30 hover:border-motif-medium/50 transition-all"
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <Image src="/mobile-background/couple (2).webp" alt="Wedding moment 2" fill className="object-cover" style={{ imageOrientation: "from-image" }} />
+                    <Image src="/mobile-background/couple (3).jpeg" alt="Wedding moment 2" fill className="object-cover" style={{ imageOrientation: "from-image" }} />
                   </motion.div>
                   <motion.div
                     className="relative col-span-2 aspect-[3/2] rounded-lg sm:rounded-xl overflow-hidden shadow-md border-2 border-motif-medium/30 hover:border-motif-medium/50 transition-all"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <Image src="/desktop-background/couple (6).webp" alt="Wedding moment 3" fill className="object-cover" />
+                    <Image src="/desktop-background/couple (2).jpeg" alt="Wedding moment 3" fill className="object-cover" />
                   </motion.div>
                 </div>
                 <p

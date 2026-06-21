@@ -1,10 +1,10 @@
 export const siteConfig = {
   couple: {
-    bride: "Aileen R. Isla", //Noenyl Bryle M. Gonzaga
-    brideNickname: "Aileen", //Ltryl
-    groom: "Arjay C. Credito", //Ltryl B. Benitez
-    groomNickname: "Arjay",
-    monogram:"/monogram/newfinal.png" ,//Ltryl
+    bride: "Lersly Ann E. Gonza ", //Noenyl Bryle M. Gonzaga
+    brideNickname: "Lersly", //Ltryl
+    groom: "Arnic Niño B. Gaña ", //Ltryl B. Benitez
+    groomNickname: "Arnic",
+    monogram:"/monogram/monog.png" ,//Ltryl
     backgroundMusic:"/background_music/Ebe Dancel - Bawat Daan (Official Music Video)-trimmed (1) (1).mp3"
   },
   googleAPI:{
@@ -19,9 +19,9 @@ export const siteConfig = {
     googleShare: "https://docs.google.com/spreadsheets/d/1H_MQtvzAWaWjmcP4m1y-ZuNzJWoe9SYy9E5CaVJfSwA/edit?usp=sharing",
   },
   wedding: {
-    date: "May 8, 2026",
+    date: "July 4, 2026",
     time: "9:00 AM",
-    venue: "Iglesia Ni Cristo, Nasugbu, Batangas",
+    venue: "Sta. Rosa de Lima Parish Church Poblacion, Alcoy, Cebu Philippines",
     tagline: "are getting married!",
     theme: "Our wedding palette is inspired by timeless elegance and warmth.Motif Colors: Champagne Gold, Soft Beige, Warm Soft Brown",
     motif: "#9CAA99, #C4D1E2, #8799A7, #997C76, #A9A9A9, #D5D1C8",
@@ -29,7 +29,7 @@ export const siteConfig = {
   details: {
     rsvp: {
       deadline: "April 28, 2026.",
-      contact: "Aileen Rosales Isla",
+      contact: "Lersly Ann E. Gonza",
       phone: "0927 815 3245",
     },
   },
@@ -48,21 +48,21 @@ export const siteConfig = {
     // }
   },
   ceremony: {
-    location: "Iglesia Ni Cristo, Nasugbu, Batangas",
-    venue: "JP Laurel St., Nasugbu, Batangas City",
-    date: "May 8, 2026",
-    day: "Friday",
-    time: "9:00 AM",
-    entourageTime: "8:00 AM",
-    guestsTime: "8:30 AM",
-    image: "/Details/ceremony.png",
+    location: "Sta. Rosa de Lima Parish Church Poblacion",
+    venue: "Alcoy, Cebu Philippines",
+    date: "July 4, 2026",
+    day: "Saturday",
+    time: "2:00 PM",
+    entourageTime: "1:00 PM",
+    guestsTime: "1:30 PM",
+    image: "/Details/church.png",
   },
   reception: {
-    location: "Events Place Hermosas, Mataywanac, Tuy, Batangas",
-    venue: "Kalye Pogi, 51 Mataywanac, Kabituls, Tuy, 4214 Batangas",
-    date: "May 8, 2026",
+    location: "Eusebio Sestoso Memorial Coliseum Poblacion",
+    venue: "Eusebio Sestoso Memorial Coliseum Poblacion, Alcoy, Cebu Philippines",
+    date: "July 4, 2026",
     time: "12:00 PM",
-    image: ["/Details/Reception.png", "/Details/Reception2.png"],
+    image: ["/Details/ceremony.png", "/Details/ceremony.png"],
   },
   dressCode: {
       theme: "SEMI-FORMAL",
@@ -78,8 +78,8 @@ export const siteConfig = {
       gents: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       ladies: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       notes: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed.",
-      photo: "/Details/newGuestAttire.png",
-      palette: "#670626, #9E2A4D, #E75480, #F7CDCF, #FFF4F7"
+      photo: "/Details/guest.png",
+      palette: "#071B4D, #3A517A, #829CC1, #C5D7E3"
     },
     note: "We kindly request our guests to dress in attire following our wedding palette."
   },
@@ -112,7 +112,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   },
   snapShare: {
     googleDriveLink: "https://drive.google.com/drive/folders/1pn69deI_kE_BqFtlDS-I-ey2SmMw5Geo?usp=sharing",
-    hashtag: ["#ToJAYtherForAIver","#HappyJAYverAIfter"],
+    hashtag: ["#ArnicAndLerslyForever","#ArnicAndLerslyBoardingForLife"],
     instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
   },
 }

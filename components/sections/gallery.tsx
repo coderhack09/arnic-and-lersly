@@ -26,11 +26,10 @@ const cinzel = Cinzel({
 })
 
 const galleryItems = [
-  { image: "/mobile-background/couple (1).webp", text: " " },
-  { image: "/mobile-background/couple (2).webp", text: " " },
-  { image: "/mobile-background/couple (3).webp", text: " " },
-  { image: "/mobile-background/couple (4).webp", text: " " },
-  { image: "/mobile-background/couple (5).webp", text: " " },
+  { image: "/mobile-background/couple (4).jpeg", text: " " },
+  { image: "/mobile-background/couple (2).jpeg", text: " " },
+  { image: "/mobile-background/couple (3).jpeg", text: " " },
+  { image: "/mobile-background/couple (1).jpeg", text: " " },
 ]
 
 export function Gallery() {

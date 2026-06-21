@@ -1,21 +1,19 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { StorySection } from '@/components/StorySection';
-import { Cinzel, Cormorant_Garamond } from "next/font/google";
+import { Cinzel } from "next/font/google";
 import { siteConfig } from '@/content/site';
-import { MapPin, Compass, Navigation } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 const cinzel = Cinzel({
   subsets: ["latin"],
   weight: "400",
 })
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-})
+const serif = '"Playfair Display", "Georgia", serif';
 
 // Palette lives in globals.css → @theme inline → --color-motif-*
 // Edit there once to update every component.
@@ -94,23 +92,96 @@ const PassportStamp = ({
                     "text-[7px] sm:text-[8px]";
   return (
     <div
-      className={`inline-flex flex-col items-center justify-center ${dim} rounded-full border-[2.5px] border-motif-deep/25 opacity-55`}
-      style={{ transform: `rotate(${rotation}deg)` }}
+      className={`inline-flex flex-col items-center justify-center ${dim} rounded-full border-[2.5px] opacity-50`}
+      style={{
+        transform: `rotate(${rotation}deg)`,
+        borderColor: 'rgba(188, 155, 97, 0.35)',
+      }}
     >
-      <div className={`border-[1.5px] border-motif-deep/25 rounded-full ${inner} flex flex-col items-center justify-center gap-0.5 px-2`}>
-        <span className={`${cinzel.className} ${txt} tracking-[0.18em] uppercase text-motif-deep/60 text-center leading-tight`}>{line1}</span>
-        {line2 && <div className="w-4/5 h-px bg-motif-deep/20 my-0.5" />}
-        {line2 && <span className={`${cinzel.className} ${txt} tracking-[0.12em] uppercase text-motif-deep/50 text-center leading-tight`}>{line2}</span>}
-        {line3 && <span className={`${cinzel.className} text-[5px] sm:text-[6px] tracking-[0.1em] uppercase text-motif-deep/40 text-center`}>{line3}</span>}
+      <div
+        className={`border-[1.5px] rounded-full ${inner} flex flex-col items-center justify-center gap-0.5 px-2`}
+        style={{ borderColor: 'rgba(188, 155, 97, 0.28)' }}
+      >
+        <span
+          className={`${cinzel.className} ${txt} tracking-[0.18em] uppercase text-center leading-tight`}
+          style={{ color: 'var(--passport-gold-muted)' }}
+        >
+          {line1}
+        </span>
+        {line2 && <div className="w-4/5 h-px my-0.5" style={{ backgroundColor: 'rgba(188, 155, 97, 0.22)' }} />}
+        {line2 && (
+          <span
+            className={`${cinzel.className} ${txt} tracking-[0.12em] uppercase text-center leading-tight`}
+            style={{ color: 'var(--passport-gold)' }}
+          >
+            {line2}
+          </span>
+        )}
+        {line3 && (
+          <span
+            className={`${cinzel.className} text-[5px] sm:text-[6px] tracking-[0.1em] uppercase text-center`}
+            style={{ color: 'rgba(188, 155, 97, 0.55)' }}
+          >
+            {line3}
+          </span>
+        )}
       </div>
     </div>
   )
 }
 
+/* ─── Passport cover atmosphere (matches LoadingScreen) ───────── */
+const PassportCoverBackground: React.FC = () => (
+  <>
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        background: [
+          'radial-gradient(ellipse at 28% 12%, rgba(46, 55, 72, 0.22) 0%, transparent 52%)',
+          'radial-gradient(ellipse at 72% 88%, rgba(0, 0, 0, 0.32) 0%, transparent 54%)',
+          'linear-gradient(180deg, rgba(9, 25, 48, 0.4) 0%, transparent 42%, rgba(0, 0, 0, 0.22) 100%)',
+        ].join(', '),
+      }}
+    />
+    <div className="passport-noise absolute inset-0 pointer-events-none z-[1]" aria-hidden />
+    <div className="passport-vignette absolute inset-0 pointer-events-none z-[1] opacity-55" aria-hidden />
+    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div
+        className="absolute inset-0 passport-map-fill opacity-[0.38]"
+        style={{
+          WebkitMaskImage: 'url(/decoration/background_map.png)',
+          maskImage: 'url(/decoration/background_map.png)',
+          WebkitMaskSize: 'cover',
+          maskSize: 'cover',
+          WebkitMaskPosition: 'center',
+          maskPosition: 'center',
+          WebkitMaskRepeat: 'no-repeat',
+          maskRepeat: 'no-repeat',
+        }}
+        aria-hidden
+      />
+    </div>
+  </>
+)
+
 /* ─── Passport Booklet Header ─────────────────────────────────── */
 const PassportBooklet = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+
+  const coupleNames = useMemo(
+    () => `${siteConfig.couple.groomNickname} and ${siteConfig.couple.brideNickname}`,
+    []
+  );
+
+  const formattedDate = useMemo(() => {
+    const d = new Date(siteConfig.wedding.date);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = String(d.getFullYear()).slice(-2);
+    return `${day}.${month}.${year}`;
+  }, []);
+
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
@@ -123,48 +194,137 @@ const PassportBooklet = () => {
   return (
     <div
       ref={ref}
-      className={`bg-motif-cream flex flex-col items-center py-8 sm:py-12 px-4 relative z-20 transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      className="bg-motif-cream flex flex-col items-center py-8 sm:py-12 md:py-16 px-4 relative z-20"
     >
-      {/* Passport cover card */}
-      <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
+      <div className="relative w-full max-w-[min(100%,28rem)] sm:max-w-md mx-auto">
         {/* Floating stamps */}
-        <div className="absolute -left-2 sm:-left-6 top-2 sm:top-4 z-10 pointer-events-none">
-          <PassportStamp line1="Est." line2="2013" line3="12 years" rotation={-12} size="sm" />
+        <div
+          className={`absolute -left-1 sm:-left-5 top-3 sm:top-5 z-20 pointer-events-none transition-all duration-700 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        >
+          <PassportStamp line1="Est." line2="2024" line3="Love" rotation={-12} size="sm" />
         </div>
-        <div className="absolute -right-2 sm:-right-6 top-6 sm:top-10 z-10 pointer-events-none">
-          <PassportStamp line1="Promise" line2="Made" line3="2017" rotation={14} size="sm" />
+        <div
+          className={`absolute -right-1 sm:-right-5 top-8 sm:top-12 z-20 pointer-events-none transition-all duration-700 delay-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        >
+          <PassportStamp line1="Forever" line2="Bound" rotation={14} size="sm" />
         </div>
 
-        {/* Card body */}
-        <div className="bg-motif-deep rounded-sm px-6 sm:px-10 py-7 sm:py-10 flex flex-col items-center gap-3 sm:gap-4 shadow-xl">
-          <p className={`${cinzel.className} text-[9px] sm:text-[10px] tracking-[0.35em] uppercase text-motif-cream/50 text-center`}>
-            Republic of Love
-          </p>
-          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-motif-cream/20 flex items-center justify-center">
-            <Compass className="w-6 h-6 sm:w-8 sm:h-8 text-motif-cream/60" strokeWidth={1} />
+        {/* Passport cover — styled like LoadingScreen */}
+        <div
+          className="relative overflow-hidden rounded-sm shadow-[0_20px_50px_rgba(5,24,51,0.32)]"
+          style={{ backgroundColor: 'var(--passport-navy)' }}
+        >
+          <PassportCoverBackground />
+
+          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 sm:px-8 py-10 sm:py-14 md:py-16">
+            {visible && (
+              <>
+                <p
+                  className="passport-gold-text passport-gold-text-shimmer passport-enter uppercase"
+                  data-text="WEDDING"
+                  style={{
+                    fontFamily: serif,
+                    fontWeight: 400,
+                    fontSize: 'clamp(0.48rem, 1.8vw, 0.62rem)',
+                    letterSpacing: '0.62em',
+                    marginBottom: '0.4rem',
+                  }}
+                >
+                  Wedding
+                </p>
+
+                <h2
+                  className="passport-gold-text passport-gold-text-shimmer passport-enter passport-enter-delay-1 uppercase"
+                  data-text="PASSPORT"
+                  style={{
+                    fontFamily: serif,
+                    fontWeight: 900,
+                    fontSize: 'clamp(1.85rem, 8vw, 2.75rem)',
+                    letterSpacing: '0.08em',
+                    lineHeight: 0.95,
+                    marginBottom: 'clamp(1.1rem, 4vw, 1.75rem)',
+                  }}
+                >
+                  Passport
+                </h2>
+
+                <div
+                  className="relative w-[min(72vw,320px)] aspect-[594/420] mb-[clamp(1rem, 3.5vw, 1.65rem)] passport-enter passport-enter-delay-2"
+                  aria-hidden
+                >
+                  <Image
+                    src="/decoration/compass_symbol_gold.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 72vw, 320px"
+                  />
+                </div>
+
+                <p
+                  className="passport-gold-text passport-enter passport-enter-delay-3 uppercase"
+                  style={{
+                    fontFamily: serif,
+                    fontWeight: 400,
+                    fontSize: 'clamp(0.42rem, 1.6vw, 0.54rem)',
+                    letterSpacing: '0.48em',
+                    marginBottom: 'clamp(0.6rem, 2vw, 0.95rem)',
+                  }}
+                >
+                  To the Marriage of
+                </p>
+
+                <div
+                  className="passport-enter passport-enter-delay-4 w-full max-w-[min(100%,20rem)] mx-auto"
+                  style={{
+                    marginBottom: 'clamp(0.75rem, 2.5vw, 1.15rem)',
+                    paddingTop: 'clamp(0.5rem, 2vw, 0.85rem)',
+                    paddingBottom: 'clamp(0.5rem, 2vw, 0.85rem)',
+                    paddingLeft: 'clamp(0.75rem, 4vw, 1.5rem)',
+                    paddingRight: 'clamp(0.75rem, 4vw, 1.5rem)',
+                  }}
+                >
+                  <p
+                    className="passport-gold-text passport-gold-text-shimmer"
+                    data-text={coupleNames}
+                    style={{
+                      fontFamily: 'var(--font-serif), "Great Vibes", cursive',
+                      fontSize: 'clamp(2rem, 7.5vw, 3.25rem)',
+                      lineHeight: 1.2,
+                      margin: 0,
+                    }}
+                  >
+                    {coupleNames}
+                  </p>
+                </div>
+
+                <p
+                  className="passport-gold-text passport-enter passport-enter-delay-5"
+                  style={{
+                    fontFamily: serif,
+                    fontWeight: 400,
+                    fontSize: 'clamp(0.72rem, 2.2vw, 0.88rem)',
+                    letterSpacing: '0.22em',
+                  }}
+                >
+                  {formattedDate}
+                </p>
+              </>
+            )}
           </div>
-          <h2 className={`${cinzel.className} text-lg sm:text-2xl md:text-3xl tracking-[0.1em] uppercase text-motif-cream/90 text-center leading-snug`}>
-            {siteConfig.couple.groomNickname} &amp; {siteConfig.couple.brideNickname}
-          </h2>
-          <div className="w-12 sm:w-16 h-px bg-motif-cream/20" />
-          <p className={`${cormorant.className} text-xs sm:text-sm tracking-[0.2em] uppercase text-motif-cream/50 text-center`}>
-            Passport to Forever
-          </p>
-          {/* Barcode-style decoration */}
-          <div className="flex gap-px mt-1">
-            {Array.from({ length: 28 }).map((_, i) => (
-              <div
-                key={i}
-                className="bg-motif-cream/20"
-                style={{ width: i % 4 === 0 ? 3 : 1, height: i % 7 === 0 ? 18 : i % 3 === 0 ? 14 : 10 }}
-              />
-            ))}
-          </div>
-          <p className={`${cormorant.className} text-[8px] sm:text-[9px] tracking-[0.15em] text-motif-cream/30 uppercase`}>
-            {siteConfig.wedding.date}
-          </p>
         </div>
       </div>
+
+      {visible && (
+        <div className="text-center mt-8 sm:mt-10 passport-enter passport-enter-delay-5">
+          <div className="w-12 sm:w-16 h-px bg-motif-silver/50 mx-auto mb-4 sm:mb-5 opacity-60" />
+          <h1
+            className={`${cinzel.className} text-xl sm:text-2xl md:text-3xl uppercase tracking-[0.16em] sm:tracking-[0.2em] font-normal leading-tight text-motif-deep`}
+          >
+            Our Love Story
+          </h1>
+        </div>
+      )}
     </div>
   )
 }
@@ -232,45 +392,47 @@ export function LoveStory() {
         theme="light"
         layout="image-left"
         isFirst={true}
-        title="Twelve Years in Love, Eight Years in Promise, A Lifetime in Faith"
-        imageSrc="/mobile-background/couple (1).webp"
+        title="Where It All Began"
+        imageSrc="/mobile-background/couple (3).jpeg"
         text={
           <>
             <p className="mb-4">
-              For twelve beautiful years, Arjay and Aileen have shared a love that grew from simple beginnings into something deeply rooted and enduring. Through laughter, challenges, distance, and dreams, their story has been a testament to patience, understanding, and the quiet strength of choosing each other every single day.
+            Arnic and Lersly’s love story began on January 25, 2024, a day that was both meaningful and unforgettable—Arnic’s birthday. What started as a simple exchange of messages, “Hi, Ma’am” and “Happy Birthday, Sir,” soon became the spark that connected two hearts. Through daily conversations and shared moments online, their friendship gradually blossomed into something deeper.
             </p>
           </>
         }
       />
 
-      <TrailDivider milestone="2013" />
-
+      {/* <TrailDivider milestone="2013" /> */}
+      <TrailDivider />
       {/* SECTION 2 */}
       <StorySection
         theme="dark"
         layout="image-right"
-        imageSrc="/mobile-background/couple (2).webp"
+        imageSrc="/mobile-background/couple (2).jpeg"
+        title="Love Across the Distance"
         text={
           <>
             <p>
-              Eight years ago, they made a promise—not just of a future together, but of commitment, growth, and unwavering support. That promise carried them through life's uncertainties, shaping a bond that is not only romantic, but also grounded in friendship and trust. It is a love that has been tested, refined, and made stronger with time.
+            As time passed, Arnic and Lersly finally met in person and spent precious moments getting to know each other better. Their bond grew stronger with every conversation and every memory they created together. Although distance eventually separated them, their love remained steadfast. Through constant communication, trust, and unwavering commitment, they continued to nurture their relationship despite being miles apart.
             </p>
           </>
         }
       />
 
-      <TrailDivider milestone="2017" />
-
+      {/* <TrailDivider milestone="2017" /> */}
+      <TrailDivider />
       {/* SECTION 3 */}
       <StorySection
         theme="light"
         layout="image-left"
         isLast={true}
-        imageSrc="/mobile-background/couple (3).webp"
+        imageSrc="/mobile-background/couple (4).jpeg"
+        title='A New Journey Together'
         text={
           <>
             <p>
-              Their journey has never been perfect, but it has always been real. In every moment of doubt, they found clarity in each other. In every hardship, they discovered resilience together. And in every joy, they celebrated not just the moment—but the blessing of having one another.
+            While Arnic worked abroad as a seafarer, Lersly patiently waited for the day they would be together again. Months of longing only strengthened their love and reminded them of the future they dreamed of building. When Arnic finally returned home, they embraced the opportunity to turn their dreams into reality. United once more, they chose to begin a new chapter—building their little family together and preparing for a lifetime of love, partnership, and happiness. ❤️
             </p>
           </>
         }
@@ -279,7 +441,7 @@ export function LoveStory() {
       <TrailDivider />
 
       {/* SECTION 4 */}
-      <StorySection
+      {/* <StorySection
         theme="dark"
         layout="image-right"
         imageSrc="/mobile-background/couple (4).webp"
@@ -290,12 +452,12 @@ export function LoveStory() {
             </p>
           </>
         }
-      />
+      /> */}
 
-      <TrailDivider milestone="2026" />
+      {/* <TrailDivider milestone="2026" /> */}
 
       {/* SECTION 5 */}
-      <StorySection
+      {/* <StorySection
         theme="light"
         layout="image-left"
         isLast={true}
@@ -307,9 +469,9 @@ export function LoveStory() {
             </p>
           </>
         }
-      />
-
-      <TrailDivider milestone="Forever" />
+      /> */}
+{/* 
+      <TrailDivider milestone="Forever" /> */}
 
       {/* Map & destination section */}
       {/* <MapDestination /> */}
