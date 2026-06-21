@@ -10,8 +10,8 @@ export const siteConfig = {
   googleAPI:{
     messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdUE21x2i-3cIR1UDRCdkNkLxvf7akm0ObrHLmGGlszYumLBg/formResponse", // Done
     message: "https://script.google.com/macros/s/AKfycbyrv84_xSS7Zik7EQ6JtmgpH4bHlq3v8cp5ODu6olPRDHymlvtixDSkZ4qs20KjXVv_/exec",//done 
-    guestList: "https://script.google.com/macros/s/AKfycbzPRJl0Cmr5oXsGPv1emLldySBH_6nGzHKmbGS7Ktn_C-0LK5GFIt-Fhdqe9OJZrRE/exec",//done 
-    guestRequest: "https://script.google.com/macros/s/AKfycbxJS608ZqkRdSwtDQ5pVSSHpp9U8toI9b9SXMmb28JCw0zqCtpCMNZGj-vTUld4JC6S/exec", //odne
+    guestList: "https://script.google.com/macros/s/AKfycbyK5tKFK6YjxJEaNueNbqeOh2k_yJ6jQ3H32QqqHpmVAH1XseSmwsIz0yT7RPZfdv6j/exec",//done 
+    guestRequest: "https://script.google.com/macros/s/AKfycbytfk6sb2CIKpofyDWj5AlyWedi9cY11UgvPT3mab3n1OO_kGTIWEOb80cNhXOzRSpW/exec", //odne
     entourage: "https://script.google.com/macros/s/AKfycbwiIsWcXDkzBBLsDliRUfoAGZDRviac_opLWTwSu6diOklD2zSP9JenHV3r0E_OBgdd/exec", 
     sponsors: "https://script.google.com/macros/s/AKfycbzFwn1m69m18N9NPga-jEb6Rs3tw1r4BPiwDKyg-XRsT7KLlUOZ6zC5IAtSNQh6Owjt/exec", 
     weddingDetails: "https://script.google.com/macros/s/AKfycbwtdWw1tV6KUp9IWSsmDnXaOi2yyAaH7NfXLGaegAovo-LxqjM7vGED3uZ2-JFHcK5n/exec",
