@@ -20,7 +20,7 @@ export const siteConfig = {
   },
   wedding: {
     date: "July 4, 2026",
-    time: "9:00 AM",
+    time: "2:00 PM",
     venue: "Sta. Rosa de Lima Parish Church Poblacion, Alcoy, Cebu Philippines",
     tagline: "are getting married!",
     theme: "Our wedding palette is inspired by timeless elegance and warmth.Motif Colors: Champagne Gold, Soft Beige, Warm Soft Brown",
@@ -28,7 +28,7 @@ export const siteConfig = {
   },
   details: {
     rsvp: {
-      deadline: "April 28, 2026.",
+      deadline: "June 1, 2026.",
       contact: "Lersly Ann E. Gonza",
       phone: "0927 815 3245",
     },
