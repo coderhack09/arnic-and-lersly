@@ -88,13 +88,13 @@ const ROLE_CATEGORY_ORDER = [
   "Matron of Honor",
   "Best Man",
   "Maid of Honor",
+  "Little Bride",
   "Candle Sponsors",
   "Veil Sponsors",
   "Cord Sponsors",
   "Groomsmen",
   "Bridesmaids",
   "Little Groom",
-  "Little Bride",
   "Ring Bearer",
   "Bible Bearer",
   "Coin Bearer",
@@ -877,47 +877,26 @@ export function Entourage() {
                   return null
                 }
 
-                // Special handling for Little Groom and Little Bride - combine into single two-column layout
-                if (category === "Little Groom" || category === "Little Bride") {
-                  // Get both little ones groups
-                  const littleGroom = grouped["Little Groom"] || []
-                  const littleBride = grouped["Little Bride"] || []
-                  
-                  // Only render once (when processing "Little Groom")
-                  if (category === "Little Groom") {
-                    return (
-                      <div key="LittleOnes">
-                        {categoryIndex > 0 && (
-                          <div className="flex justify-center py-2 sm:py-2.5 md:py-3 mb-2 sm:mb-2.5 md:mb-3">
-                            <div className="w-full max-w-md h-px" style={{ background: 'linear-gradient(to right, transparent, color-mix(in srgb, var(--color-motif-medium) 31%, transparent), transparent)' }}></div>
+                // Special handling for Little Groom — standalone centered section
+                if (category === "Little Groom") {
+                  return (
+                    <div key="LittleGroom">
+                      {categoryIndex > 0 && (
+                        <div className="flex justify-center py-2 sm:py-2.5 md:py-3 mb-2 sm:mb-2.5 md:mb-3">
+                          <div className="w-full max-w-md h-px" style={{ background: 'linear-gradient(to right, transparent, color-mix(in srgb, var(--color-motif-medium) 31%, transparent), transparent)' }}></div>
+                        </div>
+                      )}
+                      <TwoColumnLayout singleTitle="Little Groom" centerContent={true}>
+                        <div className="col-span-full">
+                          <div className="max-w-sm mx-auto flex flex-col items-center gap-0.5 sm:gap-1">
+                            {members.map((m, idx) => (
+                              <NameItem key={`little-groom-${idx}-${m.Name}`} member={m} align="center" />
+                            ))}
                           </div>
-                        )}
-                        <TwoColumnLayout leftTitle="Little Groom" rightTitle="Little Bride">
-                          {(() => {
-                            const maxLen = Math.max(littleGroom.length, littleBride.length)
-                            const rows = []
-                            for (let i = 0; i < maxLen; i++) {
-                              const left = littleGroom[i]
-                              const right = littleBride[i]
-                              rows.push(
-                                <React.Fragment key={`little-row-${i}`}>
-                                  <div key={`littlegroom-cell-${i}`} className="px-1.5 sm:px-2 md:px-2.5">
-                                    {left ? <NameItem member={left} align="right" /> : <div className="py-0.5" />}
-                                  </div>
-                                  <div key={`littlebride-cell-${i}`} className="px-1.5 sm:px-2 md:px-2.5">
-                                    {right ? <NameItem member={right} align="left" /> : <div className="py-0.5" />}
-                                  </div>
-                                </React.Fragment>
-                              )
-                            }
-                            return rows
-                          })()}
-                        </TwoColumnLayout>
-                      </div>
-                    )
-                  }
-                  // Skip rendering for "Little Bride" since it's already rendered above
-                  return null
+                        </div>
+                      </TwoColumnLayout>
+                    </div>
+                  )
                 }
 
                 // Special handling for Bridesmaids and Groomsmen - combine into single two-column layout
