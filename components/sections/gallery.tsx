@@ -29,6 +29,7 @@ const galleryItems = [
   { image: "/mobile-background/couple (4).jpeg", text: " " },
   { image: "/mobile-background/couple (2).jpeg", text: " " },
   { image: "/mobile-background/couple (3).jpeg", text: " " },
+  { image: "/mobile-background/couple (5).jpeg", text: " " },
   { image: "/mobile-background/couple (1).jpeg", text: " " },
 ]
 
